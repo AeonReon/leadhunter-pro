@@ -2,8 +2,8 @@
 // Caches the app shell so it loads instantly and works offline
 // (Searches still need internet; all your saved leads are always available offline)
 
-const CACHE = 'leadhunter-v1';
-const SHELL = ['/', '/index.html', '/manifest.json'];
+const CACHE = 'leadhunter-v2';
+const SHELL = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -22,7 +22,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   // For API calls (SerpAPI, HasData) — always go to network
   if (e.request.url.includes('serpapi.com') || e.request.url.includes('hasdata.com')) {
-    return; // let it fall through to network
+    return;
   }
   // For Google Fonts — network first, fall back to cache
   if (e.request.url.includes('fonts.googleapis.com') || e.request.url.includes('fonts.gstatic.com')) {
@@ -31,7 +31,7 @@ self.addEventListener('fetch', e => {
     );
     return;
   }
-  // For everything else (app shell) — cache first
+  // For everything else (app shell) — cache first, then network
   e.respondWith(
     caches.match(e.request).then(r => r || fetch(e.request).then(res => {
       const clone = res.clone();
