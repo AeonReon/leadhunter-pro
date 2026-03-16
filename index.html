@@ -1167,7 +1167,7 @@ async function fetchFromAPI(category, location, limit) {
 }
 
 async function fetchSerpAPI(query, limit) {
-  // SerpAPI Google Maps search
+  // SerpAPI Google Maps search — routed through /api/search proxy
   const params = new URLSearchParams({
     engine: 'google_maps',
     q: query,
@@ -1175,7 +1175,7 @@ async function fetchSerpAPI(query, limit) {
     api_key: settings.apiKey,
     num: Math.min(limit, 20),
   });
-  const url = `https://serpapi.com/search.json?${params}`;
+  const url = `/api/search?${params}`;
   const res = await fetch(url);
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
@@ -1189,7 +1189,10 @@ async function fetchSerpAPI(query, limit) {
   // Paginate if more needed
   if (limit > 20 && data.serpapi_pagination?.next) {
     try {
-      const res2 = await fetch(data.serpapi_pagination.next + '&api_key=' + settings.apiKey);
+      // Route pagination through our proxy too
+      const nextParams = new URL(data.serpapi_pagination.next).searchParams;
+      nextParams.set('api_key', settings.apiKey);
+      const res2 = await fetch(`/api/search?${nextParams}`);
       const d2 = await res2.json();
       results = results.concat(d2.local_results || []);
     } catch(e) {}
@@ -1206,14 +1209,12 @@ async function fetchSerpAPI(query, limit) {
     place_id: r.place_id || '',
     thumbnail: r.thumbnail || '',
     gps: r.gps_coordinates || null,
-    // SerpAPI doesn't return socials directly — we flag for no website
   }));
 }
 
 async function fetchHasData(query, limit) {
-  // HasData Google Maps API
-  const url = `https://api.hasdata.com/scrape/google-maps/search`;
-  const res = await fetch(url, {
+  // HasData Google Maps API — routed through /api/search proxy
+  const res = await fetch('/api/search?provider=hasdata', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': settings.apiKey },
     body: JSON.stringify({ keyword: query, limit: limit, language: 'en' })
