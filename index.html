@@ -2,1727 +2,603 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f97316">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="LeadHunter">
-<link rel="manifest" href="manifest.json">
-<title>LeadHunter Pro</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>LeadHunter · realfastwebsite.com</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#080a10">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f5f4f0;
-  --white: #ffffff;
-  --card: #fafaf8;
-  --border: #e8e5de;
-  --border-2: #d4d0c8;
-  --text: #18181b;
-  --text-2: #52525b;
-  --text-3: #a1a1aa;
-  --ink: #0f172a;
-  --fire: #f97316;
-  --fire-bg: #fff7ed;
-  --fire-border: #fed7aa;
-  --green: #16a34a;
-  --green-bg: #f0fdf4;
-  --green-border: #bbf7d0;
-  --blue: #2563eb;
-  --blue-bg: #eff6ff;
-  --blue-border: #bfdbfe;
-  --amber: #d97706;
-  --amber-bg: #fffbeb;
-  --amber-border: #fde68a;
-  --red: #dc2626;
-  --red-bg: #fef2f2;
-  --red-border: #fecaca;
-  --purple: #7c3aed;
-  --purple-bg: #f5f3ff;
-  --purple-border: #ddd6fe;
-  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
-  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+  --bg: #080a10;
+  --surface: #0f1119;
+  --card: #13161f;
+  --border: #1c2030;
+  --border2: #222840;
+  --text: #e8eaf2;
+  --muted: #64748b;
+  --muted2: #3d4a5c;
+  --accent: #4f7ef7;
+  --accent2: #7c3aed;
+  --green: #10b981;
+  --red: #ef4444;
+  --yellow: #f59e0b;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: 'Figtree', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  font-size: 14px;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 
-/* ── NAV ── */
-nav {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 0 32px;
-  display: flex;
-  align-items: center;
-  height: 58px;
-  gap: 0;
-  position: sticky; top: 0; z-index: 200;
-  box-shadow: var(--shadow);
-}
-.nav-brand {
-  display: flex; align-items: center; gap: 10px;
-  margin-right: 36px;
-}
-.nav-brand-icon {
-  font-size: 20px; line-height: 1;
-}
-.nav-brand h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: 18px; font-weight: 800;
-  letter-spacing: -0.5px;
-  color: var(--ink);
-}
-.nav-brand h1 span { color: var(--fire); }
-.nav-tabs { display: flex; gap: 0; height: 100%; }
-.nav-tab {
-  display: flex; align-items: center; gap: 7px;
-  padding: 0 18px;
-  font-size: 13px; font-weight: 600;
-  color: var(--text-3);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.18s;
-  white-space: nowrap;
-  user-select: none;
-  font-family: 'Figtree', sans-serif;
-  background: none; border-top: none; border-left: none; border-right: none;
-}
-.nav-tab:hover { color: var(--text-2); }
-.nav-tab.active { color: var(--ink); border-bottom-color: var(--fire); }
-.nav-tab .tab-count {
-  background: var(--fire-bg); color: var(--fire);
-  border: 1px solid var(--fire-border);
-  border-radius: 100px; font-size: 11px; font-weight: 700;
-  padding: 1px 7px; min-width: 22px; text-align: center;
-}
-.nav-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+/* HEADER */
+.hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-ico{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 18px rgba(79,126,247,.3)}
+.logo-name{font-family:'Syne',sans-serif;font-weight:800;font-size:14px}
+.logo-sub{font-size:10px;color:var(--muted);margin-top:1px}
+.hdr-right{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 
-/* ── BUTTONS ── */
-.btn {
-  font-family: 'Figtree', sans-serif;
-  font-size: 13px; font-weight: 600;
-  padding: 8px 16px; border-radius: 8px;
-  border: none; cursor: pointer;
-  transition: all 0.16s; white-space: nowrap;
-  display: inline-flex; align-items: center; gap: 6px;
-}
-.btn-primary { background: var(--ink); color: #fff; }
-.btn-primary:hover { background: #27272a; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-.btn-fire { background: var(--fire); color: #fff; }
-.btn-fire:hover { background: #ea6c07; transform: translateY(-1px); }
-.btn-outline { background: transparent; color: var(--text-2); border: 1px solid var(--border-2); }
-.btn-outline:hover { border-color: var(--text-2); color: var(--text); background: var(--card); }
-.btn-ghost { background: transparent; color: var(--text-3); border: 1px solid transparent; padding: 7px 12px; }
-.btn-ghost:hover { background: var(--border); color: var(--text-2); }
-.btn-sm { padding: 6px 12px; font-size: 12px; }
-.btn-icon { padding: 7px; width: 32px; height: 32px; justify-content: center; }
-.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+/* TABS */
+.tabs{display:flex;gap:3px}
+.tab{padding:6px 13px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid transparent;background:none;color:var(--muted);transition:all .15s;font-family:inherit}
+.tab.active{background:var(--card);border-color:var(--border2);color:var(--text)}
 
-/* ── PAGES ── */
-.page { display: none; padding: 28px 32px; max-width: 1300px; margin: 0 auto; }
-.page.active { display: block; }
+/* BUTTONS */
+.btn{padding:8px 15px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 0 14px rgba(79,126,247,.2)}
+.btn-primary:hover{box-shadow:0 0 22px rgba(79,126,247,.4);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.5;transform:none;cursor:not-allowed}
+.btn-ghost{background:var(--card);border:1px solid var(--border2);color:var(--muted)}
+.btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+.btn-sm{padding:5px 11px;font-size:12px}
+.btn-danger{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:var(--red)}
 
-/* ── SEARCH PAGE ── */
-.search-hero {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-}
-.search-hero-top {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  margin-bottom: 24px; gap: 16px;
-}
-.search-hero-top h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 20px; font-weight: 800; color: var(--ink);
-}
-.search-hero-top p { font-size: 13px; color: var(--text-2); margin-top: 4px; line-height: 1.5; }
+/* INPUTS */
+input,select,textarea{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:10px 12px;color:var(--text);font-size:13px;font-family:inherit;outline:none;transition:border-color .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+input[type=checkbox]{width:auto}
 
-.api-pill {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 10px; padding: 8px 14px;
-  font-size: 12px; color: var(--text-2); white-space: nowrap;
-  cursor: pointer; transition: all 0.15s;
-}
-.api-pill:hover { border-color: var(--border-2); }
-.api-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
-.api-dot.ok { background: var(--green); }
+/* SEARCH PANEL */
+.search-panel{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 18px}
+.search-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.ico-wrap{flex:1;min-width:160px;position:relative}
+.ico-wrap .ico{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none}
+.ico-wrap input{padding-left:32px}
+.hint{font-size:11px;color:var(--muted2);line-height:1.5}
+.hint a{color:var(--accent);cursor:pointer;text-decoration:none}
 
-.search-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto auto;
-  gap: 10px; align-items: end;
-}
-.field-group { display: flex; flex-direction: column; gap: 6px; }
-.field-group label {
-  font-size: 11px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.8px; color: var(--text-2);
-}
-.field-input {
-  background: var(--bg); border: 1px solid var(--border-2);
-  color: var(--text); font-family: 'Figtree', sans-serif;
-  font-size: 14px; padding: 10px 14px; border-radius: 9px;
-  outline: none; transition: all 0.18s; width: 100%;
-}
-.field-input:focus { border-color: var(--fire); box-shadow: 0 0 0 3px rgba(249,115,22,0.1); background: var(--white); }
-.field-input::placeholder { color: var(--text-3); }
+/* STATS */
+.stats{display:flex;gap:6px;padding:10px 18px;border-bottom:1px solid var(--border);background:var(--bg);overflow-x:auto;flex-wrap:nowrap}
+.spill{padding:4px 11px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid;cursor:pointer;white-space:nowrap;transition:all .15s;background:none;font-family:inherit}
 
-/* Search history */
-.search-history {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);
-}
-.sh-header {
-  padding: 16px 20px; border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.sh-header h3 {
-  font-family: 'Syne', sans-serif;
-  font-size: 14px; font-weight: 700; color: var(--ink);
-}
-.sh-empty { padding: 40px; text-align: center; color: var(--text-3); font-size: 13px; }
-.sh-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 20px; border-bottom: 1px solid var(--border);
-  transition: background 0.12s; gap: 12px;
-}
-.sh-item:last-child { border-bottom: none; }
-.sh-item:hover { background: var(--card); }
-.sh-item-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
-.sh-icon { font-size: 18px; flex-shrink: 0; }
-.sh-query { font-weight: 600; font-size: 14px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sh-meta { font-size: 12px; color: var(--text-3); margin-top: 2px; }
-.sh-badges { display: flex; gap: 6px; flex-shrink: 0; }
-.badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 3px 9px; border-radius: 100px;
-  font-size: 11px; font-weight: 600; border: 1px solid; white-space: nowrap;
-}
-.badge-fire { color: var(--fire); background: var(--fire-bg); border-color: var(--fire-border); }
-.badge-green { color: var(--green); background: var(--green-bg); border-color: var(--green-border); }
-.badge-blue  { color: var(--blue);  background: var(--blue-bg);  border-color: var(--blue-border); }
-.badge-grey  { color: var(--text-3); background: var(--bg); border-color: var(--border); }
+/* LEADS */
+.leads-wrap{padding:14px 18px}
+.filter-row{display:flex;gap:8px;margin-bottom:12px;align-items:center;flex-wrap:wrap}
+.filter-row input{max-width:230px}
+.count-label{font-size:12px;color:var(--muted)}
 
-/* ── LEADS PAGE ── */
-.leads-toolbar {
-  display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center;
-}
-.search-wrap { position: relative; flex: 1; min-width: 200px; }
-.search-wrap input {
-  width: 100%; background: var(--white);
-  border: 1px solid var(--border-2); color: var(--text);
-  font-family: 'Figtree', sans-serif; font-size: 13px;
-  padding: 9px 14px 9px 35px; border-radius: 8px;
-  outline: none; transition: all 0.18s;
-}
-.search-wrap input:focus { border-color: var(--fire); box-shadow: 0 0 0 3px rgba(249,115,22,0.08); }
-.search-wrap svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text-3); pointer-events: none; }
-.fsel {
-  background: var(--white); border: 1px solid var(--border-2);
-  color: var(--text); font-family: 'Figtree', sans-serif;
-  font-size: 13px; padding: 9px 30px 9px 12px;
-  border-radius: 8px; outline: none; cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 5L10 1' stroke='%23a1a1aa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 10px center;
-  transition: border-color 0.18s;
-}
-.fsel:focus { border-color: var(--fire); outline: none; }
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;margin-bottom:7px;overflow:hidden}
+.card-hdr{display:flex;align-items:flex-start;justify-content:space-between;padding:12px 14px;gap:8px;cursor:pointer}
+.card-hdr:hover{background:rgba(255,255,255,.015)}
+.card-name{font-weight:700;font-size:13px;font-family:'Syne',sans-serif;line-height:1.3}
+.card-loc{font-size:11px;color:var(--muted);margin-top:3px}
+.card-tel{font-size:11px;color:#94a3b8;margin-top:3px}
+.badge{display:inline-flex;align-items:center;padding:1px 7px;border-radius:4px;font-size:9px;font-weight:800;letter-spacing:.3px;margin-left:5px;vertical-align:middle}
+.b-nosite{background:rgba(16,185,129,.15);color:var(--green)}
+.b-hassite{background:rgba(239,68,68,.12);color:var(--red)}
+.b-rate{background:rgba(245,158,11,.12);color:var(--yellow)}
+.spill-stage{padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;white-space:nowrap}
+.card-acts{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.ico-btn{background:var(--surface);border:none;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s}
+.ico-btn:hover{color:var(--text);background:var(--border2)}
+.card-body{padding:0 14px 12px;border-top:1px solid var(--border);display:none}
+.card-body.open{display:block}
+.detail-grid{display:flex;gap:14px;flex-wrap:wrap;padding:10px 0 8px}
+.di label{font-size:9px;color:var(--muted2);font-weight:700;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:2px}
+.di span{font-size:12px;color:var(--text)}
+.di a{font-size:12px;color:var(--accent);text-decoration:none}
+.notes-box{background:var(--bg);border-radius:7px;padding:9px 11px;font-size:12px;color:#94a3b8;line-height:1.6;margin:6px 0}
+.mover{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.mover-lbl{font-size:11px;color:var(--muted);margin-right:2px}
+.mover-btn{padding:3px 9px;border-radius:5px;font-size:10px;font-weight:700;cursor:pointer;border:1px solid;transition:all .15s;font-family:inherit;background:none}
 
-/* Cards grid */
-.leads-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 14px;
-}
+/* FORM OVERLAY */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;backdrop-filter:blur(4px)}
+.overlay.open{display:flex}
+.form-panel{background:var(--surface);border:1px solid var(--border2);border-radius:14px;width:100%;max-width:600px;padding:22px;margin:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.form-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:18px}
+.fsec{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px}
+.frow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.ff{flex:1;min-width:150px}
+.ff label{font-size:11px;color:var(--muted);display:block;margin-bottom:4px;font-weight:600}
+.stage-grid{display:flex;gap:5px;flex-wrap:wrap}
+.sg-btn{padding:5px 11px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;border:2px solid transparent;transition:all .15s;font-family:inherit;background:var(--card);color:var(--muted)}
+.chk-row{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer}
+.form-acts{display:flex;gap:7px;justify-content:flex-end;margin-top:16px}
 
-.lead-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 14px; overflow: hidden;
-  box-shadow: var(--shadow); transition: all 0.18s;
-  cursor: pointer; position: relative;
-}
-.lead-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--border-2); }
-.lead-card.status-interested { border-left: 3px solid var(--green); }
-.lead-card.status-followup { border-left: 3px solid var(--amber); }
-.lead-card.status-contacted { border-left: 3px solid var(--blue); }
-.lead-card.status-notinterested { border-left: 3px solid var(--red); opacity: 0.7; }
+/* SETTINGS */
+.settings{padding:22px 18px;max-width:460px}
+.settings h2{font-family:'Syne',sans-serif;font-size:17px;margin-bottom:6px}
+.settings p{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+.s-item{margin-bottom:16px}
+.s-item label{font-size:11px;color:var(--muted);display:block;margin-bottom:5px;font-weight:600}
+.s-item .sh{font-size:11px;color:var(--muted2);margin-top:5px;line-height:1.5}
+.s-item .sh a{color:var(--accent);text-decoration:none}
 
-.card-top {
-  padding: 16px 18px 12px;
-  border-bottom: 1px solid var(--border);
-}
-.card-name {
-  font-family: 'Syne', sans-serif;
-  font-size: 15px; font-weight: 700; color: var(--ink);
-  margin-bottom: 5px; line-height: 1.3;
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
-}
-.card-name-text { flex: 1; }
-.fire-badge {
-  display: inline-flex; align-items: center; gap: 3px;
-  background: var(--fire-bg); color: var(--fire);
-  border: 1px solid var(--fire-border);
-  border-radius: 6px; font-size: 11px; font-weight: 700;
-  padding: 2px 7px; flex-shrink: 0; margin-top: 1px;
-  font-family: 'Figtree', sans-serif;
-  letter-spacing: 0.3px;
-}
-.card-cat {
-  font-size: 11px; font-weight: 600; color: var(--text-3);
-  text-transform: uppercase; letter-spacing: 0.6px;
-}
+/* EMPTY */
+.empty{text-align:center;padding:52px 20px;color:var(--muted2)}
+.empty . ico{font-size:48px;margin-bottom:12px}
+.empty h3{font-family:'Syne',sans-serif;font-size:17px;color:var(--muted);margin-bottom:7px}
+.empty p{font-size:13px;line-height:1.7}
 
-.card-mid {
-  padding: 12px 18px;
-  border-bottom: 1px solid var(--border);
-  display: flex; flex-direction: column; gap: 6px;
-}
-.card-info-row {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 12px; color: var(--text-2);
-}
-.card-info-row svg { flex-shrink: 0; color: var(--text-3); }
-.card-info-row a { color: var(--blue); text-decoration: none; }
-.card-info-row a:hover { text-decoration: underline; }
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:18px;z-index:999;padding:11px 16px;border-radius:9px;font-size:13px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,.5);transform:translateY(70px);opacity:0;transition:all .3s cubic-bezier(.175,.885,.32,1.275);pointer-events:none;max-width:260px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.ok{background:var(--green);color:#fff}
+.toast.err{background:var(--red);color:#fff}
+.toast.info{background:#334155;color:#e2e8f0}
 
-.card-socials {
-  padding: 10px 18px;
-  display: flex; gap: 6px; flex-wrap: wrap;
-  border-bottom: 1px solid var(--border);
-}
-.s-chip {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 3px 9px; border-radius: 6px;
-  font-size: 11px; font-weight: 600;
-  text-decoration: none; border: 1px solid;
-  transition: opacity 0.15s;
-}
-.s-chip:hover { opacity: 0.7; }
-.s-fb  { color: #1877f2; background: #e8f1fd; border-color: #bbd3fc; }
-.s-ig  { color: #c13584; background: #fceef7; border-color: #f2b8df; }
-.s-li  { color: #0a66c2; background: #e7f0f9; border-color: #aacfef; }
-.s-tw  { color: #1da1f2; background: #e8f6fd; border-color: #b3e2fc; }
-.no-social { font-size: 11px; color: var(--text-3); font-style: italic; padding: 3px 0; }
+/* SPINNER */
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-.card-bottom {
-  padding: 10px 18px;
-  display: flex; align-items: center; justify-content: space-between; gap: 8px;
-}
-.status-pill {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 4px 10px; border-radius: 100px;
-  font-size: 11px; font-weight: 600; border: 1px solid;
-  white-space: nowrap; font-family: 'Figtree', sans-serif;
-}
-.status-pill::before { content:''; width:5px; height:5px; border-radius:50%; background:currentColor; flex-shrink:0; }
-.sp-none         { color:var(--text-3);  background:var(--bg);         border-color:var(--border-2); }
-.sp-contacted    { color:var(--blue);    background:var(--blue-bg);    border-color:var(--blue-border); }
-.sp-followup     { color:var(--amber);   background:var(--amber-bg);   border-color:var(--amber-border); }
-.sp-interested   { color:var(--green);   background:var(--green-bg);   border-color:var(--green-border); }
-.sp-notinterested{ color:var(--red);     background:var(--red-bg);     border-color:var(--red-border); }
+/* SEARCH RESULT LIST */
+.sr-card{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:11px 13px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.sr-name{font-weight:700;font-size:13px;font-family:'Syne',sans-serif}
+.sr-meta{font-size:11px;color:var(--muted);margin-top:3px}
 
-.card-last-note {
-  font-size: 11px; color: var(--text-3);
-  font-style: italic; flex: 1; min-width: 0;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-
-/* Empty */
-.empty-state {
-  grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--text-3);
-}
-.empty-state .ei { font-size: 40px; display: block; margin-bottom: 12px; }
-
-/* ── STATS BAR ── */
-.stats-row {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 12px; margin-bottom: 20px;
-}
-.stat-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px 18px;
-  box-shadow: var(--shadow); text-align: center;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.stat-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.stat-n {
-  font-family: 'Syne', sans-serif;
-  font-size: 24px; font-weight: 800; line-height: 1; color: var(--ink);
-}
-.stat-n.fire  { color: var(--fire); }
-.stat-n.green { color: var(--green); }
-.stat-n.blue  { color: var(--blue); }
-.stat-n.amber { color: var(--amber); }
-.stat-l { font-size: 11px; color: var(--text-3); font-weight: 500; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.6px; }
-
-/* ── MODAL ── */
-.overlay {
-  position: fixed; inset: 0;
-  background: rgba(15,23,42,0.45);
-  backdrop-filter: blur(6px);
-  z-index: 500; display: none;
-  align-items: center; justify-content: center; padding: 20px;
-}
-.overlay.open { display: flex; }
-.modal {
-  background: var(--white); border-radius: 18px;
-  width: 600px; max-width: 100%;
-  max-height: 90vh; overflow-y: auto;
-  box-shadow: var(--shadow-lg); border: 1px solid var(--border);
-  animation: popIn 0.2s ease;
-}
-@keyframes popIn { from { opacity:0; transform: scale(0.96) translateY(8px); } to { opacity:1; transform: scale(1) translateY(0); } }
-
-.modal-header {
-  padding: 24px 24px 18px;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: flex-start; gap: 12px; justify-content: space-between;
-}
-.modal-header-left h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 20px; font-weight: 800; color: var(--ink); line-height: 1.2;
-}
-.modal-close {
-  background: var(--bg); border: 1px solid var(--border-2);
-  color: var(--text-2); width: 30px; height: 30px; border-radius: 8px;
-  cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center;
-  transition: all 0.15s; flex-shrink: 0;
-}
-.modal-close:hover { background: var(--red-bg); color: var(--red); border-color: var(--red-border); }
-
-.modal-body { padding: 20px 24px; }
-
-.modal-section { margin-bottom: 22px; }
-.modal-section-title {
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1px; color: var(--text-3); margin-bottom: 10px;
-  display: flex; align-items: center; gap: 8px;
-}
-.modal-section-title::after { content:''; flex:1; height:1px; background: var(--border); }
-
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.info-item label { font-size: 11px; color: var(--text-3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; display: block; margin-bottom: 3px; }
-.info-item .val {
-  font-size: 13px; color: var(--text);
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: 7px; padding: 8px 11px; min-height: 34px; line-height: 1.4;
-  word-break: break-word;
-}
-.info-item .val.empty { color: var(--text-3); font-style: italic; }
-.info-item .val a { color: var(--blue); text-decoration: none; }
-.info-item .val a:hover { text-decoration: underline; }
-
-/* Status picker */
-.status-picker { display: flex; gap: 7px; flex-wrap: wrap; }
-.sp-btn {
-  padding: 7px 14px; border-radius: 100px;
-  font-size: 12px; font-weight: 600;
-  cursor: pointer; border: 2px solid transparent;
-  font-family: 'Figtree', sans-serif; transition: all 0.15s;
-}
-.sp-btn:hover { transform: scale(1.04); }
-.sp-btn.sel { border-color: currentColor; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-
-/* Activity log */
-.activity-log { display: flex; flex-direction: column; gap: 0; }
-.activity-item {
-  display: flex; gap: 12px; padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-}
-.activity-item:last-child { border-bottom: none; }
-.activity-dot {
-  width: 28px; height: 28px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; flex-shrink: 0; margin-top: 1px;
-  background: var(--bg); border: 1px solid var(--border);
-}
-.activity-content { flex: 1; }
-.activity-type { font-size: 13px; font-weight: 600; color: var(--ink); }
-.activity-note { font-size: 12px; color: var(--text-2); margin-top: 2px; line-height: 1.4; }
-.activity-date { font-size: 11px; color: var(--text-3); margin-top: 3px; }
-.activity-empty { font-size: 13px; color: var(--text-3); font-style: italic; padding: 8px 0; }
-
-/* Add activity form */
-.add-activity {
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: 10px; padding: 14px;
-  display: flex; flex-direction: column; gap: 10px;
-}
-.add-activity-top { display: flex; gap: 8px; flex-wrap: wrap; }
-.contact-type-btn {
-  padding: 6px 13px; border-radius: 7px;
-  font-size: 12px; font-weight: 600;
-  cursor: pointer; border: 1px solid var(--border-2);
-  font-family: 'Figtree', sans-serif;
-  background: var(--white); color: var(--text-2);
-  transition: all 0.15s;
-}
-.contact-type-btn:hover, .contact-type-btn.sel {
-  background: var(--ink); color: var(--white); border-color: var(--ink);
-}
-.activity-note-input {
-  width: 100%; background: var(--white);
-  border: 1px solid var(--border-2); color: var(--text);
-  font-family: 'Figtree', sans-serif; font-size: 13px;
-  padding: 9px 12px; border-radius: 8px; outline: none;
-  resize: vertical; min-height: 70px; transition: all 0.18s; line-height: 1.5;
-}
-.activity-note-input:focus { border-color: var(--fire); box-shadow: 0 0 0 3px rgba(249,115,22,0.08); }
-.add-activity-bottom { display: flex; justify-content: flex-end; }
-
-.modal-footer {
-  padding: 16px 24px; border-top: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center;
-  background: var(--card); border-radius: 0 0 18px 18px;
-}
-.modal-footer-info { font-size: 12px; color: var(--text-3); }
-
-/* ── API SETTINGS MODAL ── */
-.settings-modal {
-  width: 480px;
-}
-.settings-body { padding: 20px 24px; }
-.settings-field { margin-bottom: 18px; }
-.settings-field label {
-  display: block; font-size: 12px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.8px;
-  color: var(--text-2); margin-bottom: 7px;
-}
-.settings-field input, .settings-field select {
-  width: 100%; background: var(--bg);
-  border: 1px solid var(--border-2); color: var(--text);
-  font-family: 'Figtree', sans-serif; font-size: 14px;
-  padding: 10px 13px; border-radius: 9px; outline: none;
-  transition: all 0.18s;
-}
-.settings-field input:focus, .settings-field select:focus {
-  border-color: var(--fire); box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
-}
-.settings-hint { font-size: 12px; color: var(--text-3); margin-top: 5px; line-height: 1.5; }
-.settings-hint a { color: var(--blue); text-decoration: none; }
-
-/* ── LOADING ── */
-.spinner {
-  width: 18px; height: 18px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite; flex-shrink: 0;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.search-loading {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 16px; padding: 48px;
-  text-align: center; margin-bottom: 24px; box-shadow: var(--shadow);
-}
-.search-loading .sl-icon { font-size: 36px; display: block; margin-bottom: 14px; animation: pulse 1.2s ease-in-out infinite; }
-@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
-.search-loading h3 { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:6px; }
-.search-loading p { font-size:13px; color:var(--text-3); }
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
-
-/* ── WEBSITE QUALITY BADGES ── */
-.wq-badge {
-  display: inline-flex; align-items: center;
-  font-size: 10px; font-weight: 600;
-  padding: 2px 7px; border-radius: 10px;
-  letter-spacing: 0.03em; text-transform: uppercase;
-}
-.wq-badge-poor { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
-.wq-badge-average { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
-.wq-badge-good { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
-.wq-badge-social_only { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
-.wq-badge-under_construction { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
-
-/* ── CATEGORY CHIPS ── */
-.category-chips {
-  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; align-items: center;
-}
-.cc {
-  background: var(--white); border: 1px solid var(--border); border-radius: 20px;
-  padding: 5px 12px; font-size: 12px; font-family: 'Figtree', sans-serif;
-  cursor: pointer; transition: all 0.15s; color: var(--text-2); white-space: nowrap;
-}
-.cc:hover {
-  border-color: var(--fire); color: var(--fire); background: var(--fire-bg);
-  transform: translateY(-1px); box-shadow: 0 2px 8px rgba(249,115,22,0.15);
-}
-
-/* ── RESULTS BANNER ── */
-.results-banner {
-  margin: 0 32px 16px; padding: 12px 16px;
-  background: var(--green-bg); border: 1px solid var(--green-border);
-  border-radius: 10px; font-size: 13px; color: var(--green);
-  display: flex; align-items: center; gap: 10px;
-}
-.results-banner button { background: none; border: none; cursor: pointer; color: var(--blue); font-size: 12px; font-weight: 600; padding: 0; }
-.results-banner button:hover { text-decoration: underline; }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  nav { padding: 0 12px; height: 50px; }
-  .nav-brand { margin-right: 12px; }
-  .nav-brand h1 { font-size: 15px; }
-  .nav-right { gap: 4px; }
-  .nav-right .btn { padding: 5px 8px; font-size: 11px; }
-  .page { padding: 16px 12px; }
-  .search-hero { padding: 18px; border-radius: 12px; }
-  .search-hero-top { flex-direction: column; margin-bottom: 16px; }
-  .search-hero-top h2 { font-size: 17px; }
-  .search-fields { grid-template-columns: 1fr; }
-  .category-chips { gap: 5px; margin-top: 10px; }
-  .leads-grid { grid-template-columns: 1fr; }
-  .leads-toolbar { gap: 6px; }
-  .fsel { font-size: 12px; padding: 7px 24px 7px 8px; }
-  .stats-row { grid-template-columns: repeat(3, 1fr); }
-  .modal { border-radius: 14px; }
-  .modal-header { padding: 16px; }
-  .modal-body { padding: 16px; }
-  .info-grid { grid-template-columns: 1fr; }
-  .results-banner { margin: 0 12px 12px; flex-wrap: wrap; }
-}
-@media (max-width: 420px) {
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .nav-right .btn span:not(:first-child) { display: none; }
-}
-
-/* ── LEADS COUNT BAR ── */
-.leads-count-bar {
-  padding: 0 32px 12px; font-size: 12px; color: var(--text-2);
-  display: flex; align-items: center; gap: 8px;
+@media(max-width:480px){
+  .hdr{padding:10px 14px}
+  .search-panel,.leads-wrap,.settings{padding:12px 14px}
+  .stats{padding:8px 14px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-brand">
-    <span class="nav-brand-icon">🔥</span>
-    <h1>Lead<span>Hunter</span> <span style="font-size:11px;font-weight:400;color:var(--text-3);letter-spacing:0;font-family:'Figtree',sans-serif">Pro</span></h1>
+<header class="hdr">
+  <div class="logo">
+    <div class="logo-ico">🎯</div>
+    <div>
+      <div class="logo-name">LeadHunter</div>
+      <div class="logo-sub">realfastwebsite.com · <span id="totalCount">—</span> leads</div>
+    </div>
   </div>
-  <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('search',this)">
-      🔍 Search
-    </button>
-    <button class="nav-tab" onclick="showPage('leads',this)" id="leadsTab">
-      🎯 My Leads <span class="tab-count" id="leadsCount">0</span>
-    </button>
+  <div class="hdr-right">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('hunt')">🔍 Hunt</button>
+      <button class="tab" onclick="switchTab('pipeline')">📋 Pipeline</button>
+      <button class="tab" onclick="switchTab('settings')">⚙️</button>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="openForm(null)">+ Add</button>
+    <button class="btn btn-ghost btn-sm" onclick="exportCSV()">⬇ CSV</button>
   </div>
-  <div class="nav-right">
-    <button class="btn btn-outline btn-sm" onclick="exportCSV()">↓ Export CSV</button>
-    <button class="btn btn-outline btn-sm" onclick="exportBackup()" title="Save all leads + searches to a JSON file so you never lose your data">💾 Backup</button>
-    <button class="btn btn-outline btn-sm" onclick="importBackup()" title="Restore from a previous backup file">↑ Restore</button>
-    <input type="file" id="backupInput" accept=".json" style="display:none" onchange="handleBackupRestore(event)">
-    <button class="btn btn-outline btn-sm" onclick="openSettings()">⚙ API Settings</button>
-  </div>
-</nav>
+</header>
 
-<!-- SEARCH PAGE -->
-<div class="page active" id="page-search">
-
-  <div class="search-hero">
-    <div class="search-hero-top">
-      <div>
-        <h2>Find businesses with no website</h2>
-        <p>Search any category + location. Results are saved permanently — search once, use forever offline.</p>
+<!-- HUNT TAB -->
+<div id="tab-hunt">
+  <div class="search-panel">
+    <div class="search-row">
+      <div class="ico-wrap" style="flex:2;min-width:150px">
+        <span class="ico">🏪</span>
+        <input id="sQuery" placeholder="hair salons, garages, restaurants..." onkeydown="if(event.key==='Enter')runSearch()">
       </div>
-      <div class="api-pill" onclick="openSettings()" id="apiPill">
-        <span class="api-dot" id="apiDot"></span>
-        <span id="apiPillLabel">No API key set</span>
+      <div class="ico-wrap" style="flex:1;min-width:120px">
+        <span class="ico">📍</span>
+        <input id="sLoc" value="Northern Ireland" onkeydown="if(event.key==='Enter')runSearch()">
+      </div>
+      <button class="btn btn-primary" onclick="runSearch()" id="searchBtn">Search</button>
+    </div>
+    <div class="hint" id="searchHint">Results save to your library automatically — build it up search by search. <a onclick="switchTab('settings')">Set up API key →</a></div>
+  </div>
+  <div id="searchResults"></div>
+</div>
+
+<!-- PIPELINE TAB -->
+<div id="tab-pipeline" style="display:none">
+  <div class="stats" id="statsBar"></div>
+  <div class="leads-wrap">
+    <div class="filter-row">
+      <input placeholder="🔍 Search name, town..." id="filterInput" oninput="renderLeads()">
+      <span class="count-label" id="countLbl"></span>
+    </div>
+    <div id="leadsList"></div>
+  </div>
+</div>
+
+<!-- SETTINGS TAB -->
+<div id="tab-settings" style="display:none">
+  <div class="settings">
+    <h2>Settings</h2>
+    <p>Your SERPAPI key lives on the Vercel server — you only need to enter it once when deploying. This page lets you update it if needed.</p>
+
+    <div class="s-item">
+      <label>Default Search Location</label>
+      <input id="defLoc" placeholder="Northern Ireland">
+      <div class="sh">Pre-fills the location box on every search.</div>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="saveSettings()">Save</button>
+
+    <div class="s-item" style="margin-top:22px;border-top:1px solid var(--border);padding-top:18px">
+      <label>Database Status</label>
+      <div id="dbStatus" style="font-size:13px;color:var(--muted)">Checking…</div>
+    </div>
+
+    <div class="s-item" style="border-top:1px solid var(--border);padding-top:18px">
+      <label style="color:var(--red)">Clear Local Cache</label>
+      <button class="btn btn-danger btn-sm" onclick="clearCache()">Clear cache</button>
+      <div class="sh">Only clears this device's offline copy. Your cloud data stays safe.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD/EDIT FORM -->
+<div class="overlay" id="overlay">
+  <div class="form-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+      <div class="form-title" id="formTitle">Add Lead</div>
+      <button style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer" onclick="closeForm()">✕</button>
+    </div>
+    <input type="hidden" id="fId">
+
+    <div class="fsec">Business</div>
+    <div class="frow">
+      <div class="ff"><label>Business Name *</label><input id="fName" placeholder="Joe's Barber Shop"></div>
+      <div class="ff"><label>Town</label><input id="fTown" placeholder="Coleraine"></div>
+    </div>
+    <div class="frow"><div class="ff"><label>Address</label><input id="fAddr" placeholder="12 Main St"></div></div>
+    <div class="frow">
+      <div class="ff"><label>Phone</label><input id="fPhone" type="tel"></div>
+      <div class="ff"><label>Email</label><input id="fEmail" type="email"></div>
+    </div>
+
+    <div class="fsec">Online</div>
+    <div class="frow">
+      <div class="ff">
+        <label class="chk-row"><input type="checkbox" id="fHasSite"> Already has a website</label>
       </div>
     </div>
-    <div class="search-fields">
-      <div class="field-group">
-        <label>Business Category</label>
-        <input class="field-input" id="searchCategory" type="text" placeholder="e.g. plumbers, cafes, hair salons…" onkeydown="if(event.key==='Enter')doSearch()" list="categoryList" autocomplete="off">
-      </div>
-      <div class="field-group">
-        <label>Location</label>
-        <input class="field-input" id="searchLocation" type="text" placeholder="e.g. Melbourne, Fitzroy VIC, SW London…" onkeydown="if(event.key==='Enter')doSearch()">
-      </div>
-      <div class="field-group">
-        <label>Max Results</label>
-        <select class="field-input" id="searchLimit" style="cursor:pointer">
-          <option value="20">20 results</option>
-          <option value="40" selected>40 results</option>
-          <option value="60">60 results</option>
-          <option value="100">100 results</option>
+    <div class="frow"><div class="ff"><label>Website URL</label><input id="fSite" placeholder="https://..."></div></div>
+    <div class="frow">
+      <div class="ff"><label>Facebook</label><input id="fFB" placeholder="facebook.com/..."></div>
+      <div class="ff"><label>Instagram</label><input id="fIG" placeholder="@handle"></div>
+    </div>
+
+    <div class="fsec">Contact & Stage</div>
+    <div class="frow">
+      <div class="ff"><label>Contact Person</label><input id="fContact" placeholder="Owner's name"></div>
+      <div class="ff">
+        <label>Contact Method</label>
+        <select id="fMethod">
+          <option value="">— Select —</option>
+          <option>Walk-in</option><option>Cold Call</option><option>Direct Mail</option>
+          <option>Email</option><option>Social Media</option><option>Referral</option>
         </select>
       </div>
-      <button class="btn btn-fire" id="searchBtn" onclick="doSearch()" style="height:42px;align-self:end">
-        <span>Search</span>
-      </button>
     </div>
-    <div class="category-chips">
-      <span style="font-size:11px;color:var(--text-3);font-weight:500;margin-right:2px">Popular:</span>
-      <button class="cc" onclick="setCategory('Plumbers')">🔧 Plumbers</button>
-      <button class="cc" onclick="setCategory('Electricians')">⚡ Electricians</button>
-      <button class="cc" onclick="setCategory('Restaurants')">🍽️ Restaurants</button>
-      <button class="cc" onclick="setCategory('Cafes')">☕ Cafes</button>
-      <button class="cc" onclick="setCategory('Hair salons')">💇 Hair Salons</button>
-      <button class="cc" onclick="setCategory('Mechanics')">🚗 Mechanics</button>
-      <button class="cc" onclick="setCategory('Dentists')">🦷 Dentists</button>
-      <button class="cc" onclick="setCategory('Builders')">🏗️ Builders</button>
-      <button class="cc" onclick="setCategory('Gyms')">💪 Gyms</button>
-      <button class="cc" onclick="setCategory('Landscapers')">🌿 Landscapers</button>
-      <button class="cc" onclick="setCategory('Real estate agents')">🏠 Real Estate</button>
-      <button class="cc" onclick="setCategory('Accountants')">📊 Accountants</button>
-      <button class="cc" onclick="setCategory('Pest control')">🐛 Pest Control</button>
-      <button class="cc" onclick="setCategory('Cleaners')">🧹 Cleaners</button>
-      <button class="cc" onclick="setCategory('Painters')">🎨 Painters</button>
-      <button class="cc" onclick="setCategory('Florists')">💐 Florists</button>
-      <button class="cc" onclick="setCategory('Pet groomers')">🐕 Pet Groomers</button>
-      <button class="cc" onclick="setCategory('Tutors')">📚 Tutors</button>
-    </div>
-  </div>
+    <div class="frow"><div class="ff"><label>Last Contact Date</label><input type="date" id="fDate" style="color-scheme:dark"></div></div>
+    <div class="fsec" style="margin-bottom:8px">Pipeline Stage</div>
+    <div class="stage-grid" id="stageGrid"></div>
 
-  <!-- Loading -->
-  <div class="search-loading" id="searchLoading" style="display:none">
-    <span class="sl-icon">🔍</span>
-    <h3>Scraping Google Maps…</h3>
-    <p>Finding businesses, checking for websites, pulling social profiles…</p>
-  </div>
+    <div class="fsec">Notes</div>
+    <textarea id="fNotes" rows="3" placeholder="Follow-up notes, conversation details..."></textarea>
 
-  <!-- History -->
-  <div class="search-history" id="searchHistory">
-    <div class="sh-header">
-      <h3>Saved Searches</h3>
-      <span style="font-size:12px;color:var(--text-3)">Stored locally — no internet needed to re-view</span>
-    </div>
-    <div id="historyList">
-      <div class="sh-empty">No searches yet. Run your first search above to get started.</div>
-    </div>
-  </div>
-
-</div>
-
-<!-- Category Suggestions Datalist -->
-<datalist id="categoryList">
-  <!-- Home Services -->
-  <option value="Plumbers"><option value="Electricians"><option value="Builders"><option value="Painters"><option value="Carpenters">
-  <option value="Concreters"><option value="Roofers"><option value="Tilers"><option value="Landscapers"><option value="Gardeners">
-  <option value="Fence builders"><option value="Pool builders"><option value="Deck builders"><option value="Window cleaners">
-  <option value="Carpet cleaners"><option value="Pressure washers"><option value="House cleaners"><option value="Pest control">
-  <option value="Locksmiths"><option value="Security installers"><option value="Guttering specialists"><option value="Bathroom renovators">
-  <option value="Kitchen renovators"><option value="Blinds and curtains"><option value="HVAC technicians"><option value="Solar panel installers">
-  <option value="Gasfitters"><option value="Plasterers"><option value="Bricklayers"><option value="Demolition contractors">
-  <option value="Waterproofers"><option value="Underpinning specialists"><option value="Earthmoving contractors"><option value="Skip bin hire">
-  <!-- Food & Beverage -->
-  <option value="Restaurants"><option value="Cafes"><option value="Coffee shops"><option value="Bakeries"><option value="Pizza shops">
-  <option value="Fish and chip shops"><option value="Chinese restaurants"><option value="Italian restaurants"><option value="Indian restaurants">
-  <option value="Thai restaurants"><option value="Vietnamese restaurants"><option value="Japanese restaurants"><option value="Mexican restaurants">
-  <option value="Greek restaurants"><option value="Turkish restaurants"><option value="Sushi restaurants"><option value="Burger bars">
-  <option value="Food trucks"><option value="Delis"><option value="Catering services"><option value="Juice bars"><option value="Ice cream shops">
-  <option value="Butchers"><option value="Fishmongers"><option value="Greengrocers"><option value="Health food stores"><option value="Cake shops">
-  <option value="Chocolate shops"><option value="Candy stores"><option value="Breweries"><option value="Wineries"><option value="Distilleries">
-  <option value="Meal prep services"><option value="Personal chefs"><option value="Cooking schools">
-  <!-- Health & Wellness -->
-  <option value="Gyms"><option value="Personal trainers"><option value="Yoga studios"><option value="Pilates studios"><option value="CrossFit gyms">
-  <option value="Physiotherapists"><option value="Chiropractors"><option value="Osteopaths"><option value="Massage therapists">
-  <option value="Naturopaths"><option value="Nutritionists"><option value="Dietitians"><option value="Psychologists"><option value="Counsellors">
-  <option value="Podiatrists"><option value="Optometrists"><option value="Acupuncturists"><option value="Reflexologists">
-  <option value="Reiki practitioners"><option value="Hypnotherapists"><option value="Life coaches"><option value="Meditation studios">
-  <option value="Float therapy centres"><option value="Infrared sauna studios">
-  <!-- Beauty & Personal Care -->
-  <option value="Hair salons"><option value="Barbershops"><option value="Nail salons"><option value="Beauty salons"><option value="Day spas">
-  <option value="Waxing studios"><option value="Eyebrow threading"><option value="Tanning salons"><option value="Spray tan studios">
-  <option value="Cosmetic tattoo artists"><option value="Tattoo studios"><option value="Piercing studios">
-  <option value="Laser hair removal clinics"><option value="Skin clinics"><option value="Eyelash extensions"><option value="Brow bars">
-  <option value="Makeup artists"><option value="Mobile hairdressers">
-  <!-- Medical & Dental -->
-  <option value="Dentists"><option value="Orthodontists"><option value="Dental hygienists"><option value="Medical centres"><option value="GPs">
-  <option value="Physiotherapy clinics"><option value="Podiatry clinics"><option value="Optometry clinics"><option value="Hearing clinics">
-  <option value="Speech therapists"><option value="Occupational therapists"><option value="Dietetics clinics">
-  <!-- Professional Services -->
-  <option value="Accountants"><option value="Bookkeepers"><option value="Financial advisors"><option value="Mortgage brokers">
-  <option value="Insurance brokers"><option value="Real estate agents"><option value="Property managers"><option value="Solicitors">
-  <option value="Conveyancers"><option value="Migration agents"><option value="IT consultants"><option value="Web designers">
-  <option value="Graphic designers"><option value="Marketing agencies"><option value="PR agencies"><option value="Business coaches">
-  <option value="Tax agents"><option value="Business accountants"><option value="SMSF advisors">
-  <!-- Automotive -->
-  <option value="Mechanics"><option value="Panel beaters"><option value="Car detailers"><option value="Car wash"><option value="Tyre shops">
-  <option value="Exhaust shops"><option value="Windscreen repair"><option value="Mobile mechanics"><option value="Driving schools">
-  <option value="Motorcycle mechanics"><option value="Truck mechanics"><option value="Auto electricians"><option value="Smash repairers">
-  <option value="Car audio installers"><option value="4WD accessories"><option value="Roadworthy inspections">
-  <!-- Retail & Shopping -->
-  <option value="Clothing boutiques"><option value="Shoe stores"><option value="Jewellery stores"><option value="Gift shops">
-  <option value="Toy stores"><option value="Book stores"><option value="Music stores"><option value="Sporting goods stores">
-  <option value="Outdoor equipment stores"><option value="Pet shops"><option value="Plant nurseries"><option value="Florists">
-  <option value="Furniture stores"><option value="Homewares stores"><option value="Antique shops"><option value="Second-hand stores">
-  <option value="Pawn shops"><option value="Vape shops"><option value="Bike shops"><option value="Surf shops"><option value="Ski shops">
-  <option value="Art galleries"><option value="Craft stores"><option value="Fabric stores"><option value="Haberdashery">
-  <option value="Party supply stores"><option value="Wedding shops"><option value="Bridal shops">
-  <!-- Education & Training -->
-  <option value="Tutors"><option value="Music teachers"><option value="Dance studios"><option value="Art schools">
-  <option value="Coding academies"><option value="Swim schools"><option value="Martial arts studios"><option value="Language schools">
-  <option value="Childcare centres"><option value="After school care"><option value="NDIS providers"><option value="Driving instructors">
-  <!-- Entertainment & Events -->
-  <option value="Event planners"><option value="Wedding photographers"><option value="Wedding videographers"><option value="DJs">
-  <option value="Escape rooms"><option value="Bowling alleys"><option value="Laser tag centres"><option value="Paintball venues">
-  <option value="Go-kart tracks"><option value="Mini golf"><option value="Trampoline parks"><option value="Photo booth hire">
-  <option value="Magicians"><option value="Children's entertainers"><option value="Face painters"><option value="Balloon artists">
-  <option value="Wedding celebrants"><option value="Party planners">
-  <!-- Pet Services -->
-  <option value="Veterinarians"><option value="Pet groomers"><option value="Dog trainers"><option value="Dog walkers">
-  <option value="Boarding kennels"><option value="Cat boarding"><option value="Pet sitters"><option value="Aquarium stores">
-  <!-- Hospitality & Accommodation -->
-  <option value="Hotels"><option value="Motels"><option value="Bed and breakfasts"><option value="Holiday homes">
-  <option value="Hostels"><option value="Camping grounds"><option value="Caravan parks"><option value="Glamping sites">
-  <!-- Transport & Logistics -->
-  <option value="Removalists"><option value="Courier services"><option value="Freight companies"><option value="Taxi companies">
-  <option value="Bus charters"><option value="Boat charters"><option value="Limousine services">
-  <!-- Trades & Industrial -->
-  <option value="Welders"><option value="Fabricators"><option value="Cabinet makers"><option value="Upholsterers">
-  <option value="Glaziers"><option value="Stonemasons"><option value="Boat repairers"><option value="Marine mechanics">
-  <option value="Scaffolders"><option value="Rigging companies">
-  <!-- Photography & Media -->
-  <option value="Wedding photographers"><option value="Commercial photographers"><option value="Real estate photographers">
-  <option value="Product photographers"><option value="Food photographers"><option value="Aerial photographers">
-  <option value="Videographers"><option value="Video production companies"><option value="Animation studios">
-  <!-- Niche & Forgotten Categories -->
-  <option value="Taxidermists"><option value="Piano tuners"><option value="Shoe repairers"><option value="Watch repairers">
-  <option value="Seamstresses"><option value="Alteration shops"><option value="Sign writers"><option value="Embroidery services">
-  <option value="Custom cake makers"><option value="Cookie decorators"><option value="Chocolatiers">
-  <option value="Beekeepers"><option value="Interior designers"><option value="Colour consultants">
-  <option value="Trophy engravers"><option value="Awards and trophies"><option value="Custom signage">
-  <option value="Vehicle wrapping"><option value="Screen printing"><option value="Framing shops">
-  <option value="Photo restoration"><option value="Curtain makers"><option value="Blind installers">
-  <option value="Stained glass artists"><option value="Pottery studios"><option value="Leatherworkers">
-  <option value="Bookbinders"><option value="3D printing services"><option value="Laser cutting">
-  <option value="Knife sharpeners"><option value="Locksmiths"><option value="Key cutting">
-  <option value="Funeral directors"><option value="Monumental masons">
-  <option value="Cleaning product suppliers"><option value="Janitorial services">
-  <option value="Swimming pool maintenance"><option value="Irrigation specialists">
-  <option value="Arborists"><option value="Tree loppers"><option value="Stump grinding">
-</datalist>
-
-<!-- LEADS PAGE -->
-<div class="page" id="page-leads">
-
-  <!-- Search results confirmation banner -->
-  <div class="results-banner" id="resultsBanner" style="display:none">
-    <span id="resultsBannerText"></span>
-    <button onclick="clearFilters();document.getElementById('resultsBanner').style.display='none'">View all leads →</button>
-    <button onclick="document.getElementById('resultsBanner').style.display='none'" style="margin-left:auto;color:var(--text-3)">✕</button>
-  </div>
-
-  <div class="stats-row" id="statsRow">
-    <div class="stat-card"><div class="stat-n" id="stTotal">0</div><div class="stat-l">Total Leads</div></div>
-    <div class="stat-card"><div class="stat-n fire" id="stHot">0</div><div class="stat-l">🔥 Hot (No Site)</div></div>
-    <div class="stat-card"><div class="stat-n" id="stUntouched">0</div><div class="stat-l">Not Contacted</div></div>
-    <div class="stat-card"><div class="stat-n blue" id="stContacted">0</div><div class="stat-l">Contacted</div></div>
-    <div class="stat-card"><div class="stat-n amber" id="stFollowup">0</div><div class="stat-l">Follow Up</div></div>
-    <div class="stat-card"><div class="stat-n green" id="stInterested">0</div><div class="stat-l">Interested ✓</div></div>
-  </div>
-
-  <div class="leads-toolbar">
-    <div class="search-wrap">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="leadsSearch" placeholder="Search name, phone, address, category…" oninput="renderLeads()">
-    </div>
-    <select class="fsel" id="filterStatus" onchange="renderLeads()">
-      <option value="">All Statuses</option>
-      <option value="none">Not Contacted</option>
-      <option value="contacted">Contacted</option>
-      <option value="followup">Follow Up</option>
-      <option value="interested">Interested</option>
-      <option value="notinterested">Not Interested</option>
-    </select>
-    <select class="fsel" id="filterCategory" onchange="renderLeads()">
-      <option value="">All Categories</option>
-    </select>
-    <select class="fsel" id="filterSearch" onchange="renderLeads()">
-      <option value="">All Searches</option>
-    </select>
-    <select class="fsel" id="sortLeads" onchange="renderLeads()">
-      <option value="hot">Hot leads first</option>
-      <option value="name">Name A–Z</option>
-      <option value="status">Status</option>
-      <option value="recent">Recently Added</option>
-    </select>
-    <div style="margin-left:auto">
-      <button class="btn btn-outline btn-sm" onclick="importCSV()">↑ Import CSV</button>
-      <input type="file" id="importInput" accept=".csv" style="display:none" onchange="handleImport(event)">
-    </div>
-  </div>
-
-  <!-- Leads count + clear filters -->
-  <div class="leads-count-bar">
-    <span id="leadsCountText" style="color:var(--text-2)"></span>
-    <button id="clearFiltersBtn" class="btn btn-ghost btn-sm" onclick="clearFilters()" style="font-size:11px;display:none">✕ Clear filters</button>
-  </div>
-
-  <div class="leads-grid" id="leadsGrid">
-    <div class="empty-state">
-      <span class="ei">🎯</span>
-      <p>No leads yet. Run a search to find businesses!</p>
-    </div>
-  </div>
-
-</div>
-
-<!-- Lead Detail Modal -->
-<div class="overlay" id="leadOverlay" onclick="closeLeadModal(event)">
-<div class="modal" id="leadModal">
-  <div class="modal-header">
-    <div class="modal-header-left">
-      <h2 id="mName"></h2>
-      <div style="margin-top:7px;display:flex;gap:6px;flex-wrap:wrap" id="mHeaderBadges"></div>
-    </div>
-    <button class="modal-close" onclick="closeLeadModal()">✕</button>
-  </div>
-  <div class="modal-body">
-
-    <div class="modal-section">
-      <div class="modal-section-title">Contact Info</div>
-      <div class="info-grid" id="mInfoGrid"></div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">Social Media</div>
-      <div id="mSocials" style="display:flex;gap:7px;flex-wrap:wrap"></div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">Status</div>
-      <div class="status-picker" id="mStatusPicker"></div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">Outreach History</div>
-      <div class="activity-log" id="mActivityLog"></div>
-    </div>
-
-    <div class="modal-section">
-      <div class="modal-section-title">Log Contact</div>
-      <div class="add-activity">
-        <div class="add-activity-top" id="contactTypeBtns">
-          <button class="contact-type-btn sel" data-type="📧 Email">📧 Email</button>
-          <button class="contact-type-btn" data-type="📞 Phone Call">📞 Phone Call</button>
-          <button class="contact-type-btn" data-type="💬 SMS">💬 SMS</button>
-          <button class="contact-type-btn" data-type="📱 Social DM">📱 Social DM</button>
-          <button class="contact-type-btn" data-type="🚶 In Person">🚶 In Person</button>
-        </div>
-        <textarea class="activity-note-input" id="activityNoteInput" placeholder="What happened? Their response, next steps, anything useful…"></textarea>
-        <div class="add-activity-bottom">
-          <button class="btn btn-primary btn-sm" onclick="logActivity()">Log Contact</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <div class="modal-footer">
-    <div class="modal-footer-info" id="mFooterInfo"></div>
-    <div style="display:flex;gap:8px">
-      <button class="btn btn-outline btn-sm" onclick="closeLeadModal()">Close</button>
-      <button class="btn btn-primary btn-sm" onclick="saveLeadModal()">Save Changes</button>
+    <div class="form-acts">
+      <button class="btn btn-danger btn-sm" id="fDel" onclick="doDelete()" style="display:none">Delete</button>
+      <button class="btn btn-ghost" onclick="closeForm()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveLead()">Save</button>
     </div>
   </div>
 </div>
-</div>
 
-<!-- Settings Modal -->
-<div class="overlay" id="settingsOverlay" onclick="closeSettings(event)">
-<div class="modal settings-modal" id="settingsModal">
-  <div class="modal-header">
-    <div class="modal-header-left">
-      <h2>API Settings</h2>
-      <p style="font-size:13px;color:var(--text-2);margin-top:4px">Configure your scraping API to search Google Maps data.</p>
-    </div>
-    <button class="modal-close" onclick="closeSettings()">✕</button>
-  </div>
-  <div class="settings-body">
-    <div class="settings-field">
-      <label>API Provider</label>
-      <select id="apiProvider" onchange="updateProviderHint()">
-        <option value="serpapi">SerpAPI</option>
-        <option value="hasdata">HasData</option>
-      </select>
-    </div>
-    <div class="settings-field">
-      <label>API Key</label>
-      <input type="password" id="apiKeyInput" placeholder="Paste your API key here…">
-      <p class="settings-hint" id="providerHint">
-        Get a free SerpAPI key at <a href="https://serpapi.com" target="_blank">serpapi.com</a> — includes 100 free searches/month. Each search = 1–5 credits depending on results requested.
-      </p>
-    </div>
-    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
-      <button class="btn btn-outline btn-sm" onclick="closeSettings()">Cancel</button>
-      <button class="btn btn-primary btn-sm" onclick="saveSettings()">Save Settings</button>
-    </div>
-  </div>
-</div>
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════
-let leads     = [];   // all leads
-let searches  = [];   // search history
-let settings  = { provider: 'serpapi', apiKey: '' };
-let openLeadId = null;
-let tmpStatus  = null;
-let tmpContactType = '📧 Email';
-let tmpWebsiteQuality = null;
+const STAGES=[
+  {id:'new',label:'New Lead',color:'#4f7ef7'},
+  {id:'contacted',label:'Contacted',color:'#f59e0b'},
+  {id:'followed_up',label:'Followed Up',color:'#3b82f6'},
+  {id:'waiting',label:'Waiting',color:'#8b5cf6'},
+  {id:'won',label:'Won ✓',color:'#10b981'},
+  {id:'lost',label:'Lost ✗',color:'#ef4444'},
+  {id:'not_interested',label:'Not Interested',color:'#6b7280'},
+];
 
-const STATUSES = {
-  none:          { label: 'Not Contacted', cls: 'sp-none' },
-  contacted:     { label: 'Contacted',     cls: 'sp-contacted' },
-  followup:      { label: 'Follow Up',     cls: 'sp-followup' },
-  interested:    { label: 'Interested',    cls: 'sp-interested' },
-  notinterested: { label: 'Not Interested',cls: 'sp-notinterested' },
-};
+let leads=[], stageFilter='all', expanded=new Set(), selStage='new';
 
-const WEBSITE_QUALITY = {
-  unchecked:           { label: 'Not Checked',         badgeClass: '' },
-  good:                { label: 'Good Website',         badgeClass: 'wq-badge-good' },
-  average:             { label: 'Average Website',      badgeClass: 'wq-badge-average' },
-  poor:                { label: 'Poor Website',         badgeClass: 'wq-badge-poor' },
-  under_construction:  { label: 'Under Construction',   badgeClass: 'wq-badge-under_construction' },
-  social_only:         { label: 'Social Only',          badgeClass: 'wq-badge-social_only' },
-  nowebsite:           { label: 'No Website',           badgeClass: '' },
-};
-
-// ═══════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════
-function init() {
-  try { leads    = JSON.parse(localStorage.getItem('lhp_leads')   || '[]'); } catch(e){leads=[];}
-  try { searches = JSON.parse(localStorage.getItem('lhp_searches')|| '[]'); } catch(e){searches=[];}
-  try { settings = JSON.parse(localStorage.getItem('lhp_settings')|| '{}'); settings = Object.assign({provider:'serpapi',apiKey:''},settings); } catch(e){}
-
-  updateApiPill();
-  renderHistory();
-  renderLeads();
-  renderStats();
-
-  // Contact type button logic
-  document.getElementById('contactTypeBtns').addEventListener('click', e => {
-    const btn = e.target.closest('.contact-type-btn');
-    if (!btn) return;
-    document.querySelectorAll('.contact-type-btn').forEach(b => b.classList.remove('sel'));
-    btn.classList.add('sel');
-    tmpContactType = btn.dataset.type;
-  });
+// ── SETTINGS ─────────────────────────────────────────────────
+function getDefLoc(){return localStorage.getItem('lh_loc')||'Northern Ireland'}
+function saveSettings(){
+  const l=document.getElementById('defLoc').value.trim();
+  if(l)localStorage.setItem('lh_loc',l);
+  document.getElementById('sLoc').value=l||'Northern Ireland';
+  toast('Saved','ok');
+}
+function loadSettingsUI(){
+  document.getElementById('defLoc').value=getDefLoc();
+  document.getElementById('sLoc').value=getDefLoc();
 }
 
-// ═══════════════════════════════════════════════
-//  NAVIGATION
-// ═══════════════════════════════════════════════
-function showPage(id, tabEl) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  if (tabEl) tabEl.classList.add('active');
-  if (id === 'leads') renderLeads();
+// ── API ───────────────────────────────────────────────────────
+async function api(path,opts={}){
+  const r=await fetch(path,{headers:{'Content-Type':'application/json'},...opts,body:opts.body?JSON.stringify(opts.body):undefined});
+  return r.json();
 }
 
-// ═══════════════════════════════════════════════
-//  SETTINGS
-// ═══════════════════════════════════════════════
-function openSettings() {
-  document.getElementById('apiProvider').value = settings.provider || 'serpapi';
-  document.getElementById('apiKeyInput').value = settings.apiKey || '';
-  updateProviderHint();
-  document.getElementById('settingsOverlay').classList.add('open');
-}
-function closeSettings(e) {
-  if (e && e.target !== document.getElementById('settingsOverlay')) return;
-  document.getElementById('settingsOverlay').classList.remove('open');
-}
-function saveSettings() {
-  settings.provider = document.getElementById('apiProvider').value;
-  settings.apiKey   = document.getElementById('apiKeyInput').value.trim();
-  localStorage.setItem('lhp_settings', JSON.stringify(settings));
-  updateApiPill();
-  document.getElementById('settingsOverlay').classList.remove('open');
-}
-function updateApiPill() {
-  const dot   = document.getElementById('apiDot');
-  const label = document.getElementById('apiPillLabel');
-  if (settings.apiKey) {
-    dot.classList.add('ok');
-    label.textContent = (settings.provider === 'hasdata' ? 'HasData' : 'SerpAPI') + ' connected';
-  } else {
-    dot.classList.remove('ok');
-    label.textContent = 'No API key — click to set';
-  }
-}
-function updateProviderHint() {
-  const p = document.getElementById('apiProvider').value;
-  document.getElementById('providerHint').innerHTML = p === 'hasdata'
-    ? 'Get a HasData key at <a href="https://hasdata.com" target="_blank">hasdata.com</a> — competitive pricing for Google Maps scraping.'
-    : 'Get a free SerpAPI key at <a href="https://serpapi.com" target="_blank">serpapi.com</a> — 100 free searches/month included.';
+async function loadLeads(){
+  try{
+    const d=await api('/api/leads');
+    if(Array.isArray(d)){leads=d;saveCache(leads);renderAll();return;}
+  }catch(e){}
+  leads=getCache();renderAll();
 }
 
-// ═══════════════════════════════════════════════
-//  SEARCH
-// ═══════════════════════════════════════════════
-async function doSearch() {
-  const category = document.getElementById('searchCategory').value.trim();
-  const location = document.getElementById('searchLocation').value.trim();
-  const limit    = parseInt(document.getElementById('searchLimit').value);
+function saveCache(d){try{localStorage.setItem('lh_cache',JSON.stringify(d));}catch{}}
+function getCache(){try{return JSON.parse(localStorage.getItem('lh_cache')||'[]');}catch{return[];}}
 
-  if (!category || !location) return alert('Please enter both a category and location.');
-  if (!settings.apiKey) { openSettings(); return; }
-
-  const searchBtn = document.getElementById('searchBtn');
-  searchBtn.disabled = true;
-  searchBtn.innerHTML = '<div class="spinner"></div> Searching…';
-  document.getElementById('searchLoading').style.display = '';
-  document.getElementById('searchHistory').style.display = 'none';
-
-  try {
-    const rawResults = await fetchFromAPI(category, location, limit);
-    const newLeads = processResults(rawResults, category, location);
-
-    // Deduplicate against existing leads by place_id or name+address combo
-    let added = 0;
-    newLeads.forEach(nl => {
-      const exists = leads.some(l =>
-        (nl.place_id && l.place_id === nl.place_id) ||
-        (l.name === nl.name && l.address === nl.address)
-      );
-      if (!exists) { leads.push(nl); added++; }
-    });
-
-    // Save search record
-    const searchRecord = {
-      id: Date.now(),
-      query: `${category} in ${location}`,
-      category, location,
-      date: new Date().toLocaleDateString('en-AU', {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}),
-      total: newLeads.length,
-      noWebsite: newLeads.filter(l => l.isHot).length,
-      added,
-    };
-    searches.unshift(searchRecord);
-
-    save();
-    renderHistory();
-    renderStats();
-    updateLeadsTabCount();
-
-    // Auto-switch to leads
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-leads').classList.add('active');
-    document.querySelectorAll('.nav-tab')[1].classList.add('active');
-
-    // Pre-filter to this search
-    populateCategoryFilter();
-    populateSearchFilter();
-    document.getElementById('filterSearch').value = searchRecord.id;
-    renderLeads();
-
-    // Show confirmation banner so user knows data is saved
-    const banner = document.getElementById('resultsBanner');
-    const bannerText = document.getElementById('resultsBannerText');
-    if (banner && bannerText) {
-      bannerText.textContent = `✓ Search complete: Found ${newLeads.length} businesses (${newLeads.filter(l=>l.isHot).length} with no website). ${added} new leads added and saved permanently. Now showing filtered view.`;
-      banner.style.display = '';
-    }
-
-  } catch (err) {
-    let msg = err.message;
-    if (location.protocol === 'file:' && (msg === 'Failed to fetch' || msg.includes('NetworkError') || msg.includes('CORS'))) {
-      msg = 'Cannot connect to the API from a local file.\n\nUse the online version at:\nhttps://aeonreon.github.io/leadhunter-pro/\n\nOr run a local server:\npython3 -m http.server 8080\nthen open localhost:8080';
-    }
-    alert('Search failed: ' + msg);
-    console.error(err);
-  } finally {
-    searchBtn.disabled = false;
-    searchBtn.innerHTML = '<span>Search</span>';
-    document.getElementById('searchLoading').style.display = 'none';
-    document.getElementById('searchHistory').style.display = '';
+async function checkDb(){
+  try{
+    const d=await api('/api/leads');
+    document.getElementById('dbStatus').innerHTML=Array.isArray(d)
+      ?`<span style="color:var(--green)">✓ Connected · ${d.length} leads stored</span>`
+      :`<span style="color:var(--red)">✗ ${d.error||'Error'}</span>`;
+  }catch{
+    document.getElementById('dbStatus').innerHTML=`<span style="color:var(--yellow)">⚠ Offline — using local cache</span>`;
   }
 }
 
-async function fetchFromAPI(category, location, limit) {
-  const query = `${category} ${location}`;
-  if (settings.provider === 'hasdata') {
-    return fetchHasData(query, limit);
-  } else {
-    return fetchSerpAPI(query, limit);
+// ── SEARCH ────────────────────────────────────────────────────
+async function runSearch(){
+  const q=document.getElementById('sQuery').value.trim();
+  const loc=document.getElementById('sLoc').value.trim();
+  if(!q){toast('Enter a search term','err');return;}
+
+  const btn=document.getElementById('searchBtn');
+  btn.innerHTML='<span class="spin"></span>Searching…';
+  btn.disabled=true;
+  document.getElementById('searchHint').textContent=`Searching for "${q}" in ${loc}…`;
+
+  try{
+    const d=await api(`/api/search?query=${encodeURIComponent(q)}&location=${encodeURIComponent(loc)}`);
+    if(d.error){toast(d.error,'err');document.getElementById('searchHint').textContent='Search failed. Check Settings.';return;}
+    showResults(d.results||[],d.saved||0);
+    await loadLeads();
+    toast(`${d.total} found · ${d.saved} new saved ✓`,'ok');
+    document.getElementById('searchHint').textContent=`${d.total} businesses found · ${d.saved} new added to your library.`;
+  }catch(e){
+    toast('Search error: '+e.message,'err');
+    document.getElementById('searchHint').textContent='Something went wrong. Try again.';
+  }finally{
+    btn.innerHTML='Search';btn.disabled=false;
   }
 }
 
-async function fetchSerpAPI(query, limit) {
-  // SerpAPI Google Maps search — routed through /api/search proxy
-  const params = new URLSearchParams({
-    engine: 'google_maps',
-    q: query,
-    type: 'search',
-    api_key: settings.apiKey,
-    num: Math.min(limit, 20),
-  });
-  const url = `/api/search?${params}`;
-  const res = await fetch(url);
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.error || `HTTP ${res.status}`);
-  }
-  const data = await res.json();
-  if (data.error) throw new Error(data.error);
-
-  let results = data.local_results || [];
-
-  // Paginate if more needed
-  if (limit > 20 && data.serpapi_pagination?.next) {
-    try {
-      // Route pagination through our proxy too
-      const nextParams = new URL(data.serpapi_pagination.next).searchParams;
-      nextParams.set('api_key', settings.apiKey);
-      const res2 = await fetch(`/api/search?${nextParams}`);
-      const d2 = await res2.json();
-      results = results.concat(d2.local_results || []);
-    } catch(e) {}
-  }
-
-  return results.map(r => ({
-    name: r.title || '',
-    phone: r.phone || '',
-    website: r.website || '',
-    address: r.address || '',
-    category: r.type || category,
-    rating: r.rating,
-    reviews: r.reviews,
-    place_id: r.place_id || '',
-    thumbnail: r.thumbnail || '',
-    gps: r.gps_coordinates || null,
-  }));
-}
-
-async function fetchHasData(query, limit) {
-  // HasData Google Maps API — routed through /api/search proxy
-  const res = await fetch('/api/search?provider=hasdata', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': settings.apiKey },
-    body: JSON.stringify({ keyword: query, limit: limit, language: 'en' })
-  });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.message || `HTTP ${res.status}`);
-  }
-  const data = await res.json();
-  const results = data.localResults || data.results || [];
-
-  return results.map(r => ({
-    name: r.title || r.name || '',
-    phone: r.phone || r.phoneNumber || '',
-    website: r.website || r.websiteUrl || '',
-    address: r.address || r.fullAddress || '',
-    category: r.category || r.type || category,
-    rating: r.rating,
-    reviews: r.reviewsCount || r.reviews,
-    place_id: r.placeId || r.place_id || '',
-    thumbnail: r.thumbnail || r.photo || '',
-    facebook: r.facebook || '',
-    instagram: r.instagram || '',
-    linkedin: r.linkedin || '',
-  }));
-}
-
-function processResults(rawResults, category, location) {
-  return rawResults.map(r => ({
-    id: `${Date.now()}_${Math.random().toString(36).slice(2)}`,
-    searchId: null, // set after
-    name: r.name || '',
-    phone: r.phone || '',
-    email: r.email || '',
-    website: r.website || '',
-    address: r.address || '',
-    category: r.category || category,
-    rating: r.rating || null,
-    reviews: r.reviews || null,
-    place_id: r.place_id || '',
-    thumbnail: r.thumbnail || '',
-    facebook: r.facebook || '',
-    instagram: r.instagram || '',
-    linkedin: r.linkedin || '',
-    twitter: r.twitter || '',
-    isHot: !r.website || r.website === '' || r.website === '-',
-    websiteQuality: (!r.website || r.website === '' || r.website === '-') ? 'nowebsite' : 'unchecked',
-    searchQuery: `${category} in ${location}`,
-    addedDate: new Date().toISOString(),
-    _status: 'none',
-    _activity: [],
-  }));
-}
-
-// ═══════════════════════════════════════════════
-//  SEARCH HISTORY
-// ═══════════════════════════════════════════════
-function renderHistory() {
-  const el = document.getElementById('historyList');
-  if (!searches.length) {
-    el.innerHTML = '<div class="sh-empty">No searches yet. Run your first search above to get started.</div>';
-    return;
-  }
-  el.innerHTML = searches.map(s => `
-    <div class="sh-item" onclick="viewSearch(${s.id})">
-      <div class="sh-item-left">
-        <span class="sh-icon">🔍</span>
-        <div>
-          <div class="sh-query">${esc(s.query)}</div>
-          <div class="sh-meta">${s.date} · ${s.added} new leads added</div>
-        </div>
-      </div>
-      <div class="sh-badges">
-        <span class="badge badge-fire">🔥 ${s.noWebsite} hot</span>
-        <span class="badge badge-blue">${s.total} found</span>
-      </div>
-      <button class="btn btn-ghost btn-sm" style="font-size:11px" onclick="event.stopPropagation();deleteSearch(${s.id})">✕</button>
-    </div>`).join('');
-}
-
-function viewSearch(id) {
-  showPage('leads', document.querySelectorAll('.nav-tab')[1]);
-  document.querySelectorAll('.nav-tab')[0].classList.remove('active');
-  document.querySelectorAll('.nav-tab')[1].classList.add('active');
-  populateSearchFilter();
-  document.getElementById('filterSearch').value = id;
-  renderLeads();
-}
-
-function deleteSearch(id) {
-  if (!confirm('Remove this search from history? Leads will remain saved.')) return;
-  searches = searches.filter(s => s.id !== id);
-  save();
-  renderHistory();
-}
-
-// ═══════════════════════════════════════════════
-//  LEADS PAGE
-// ═══════════════════════════════════════════════
-function renderLeads() {
-  const q   = document.getElementById('leadsSearch').value.toLowerCase();
-  const stF = document.getElementById('filterStatus').value;
-  const caF = document.getElementById('filterCategory').value;
-  const srF = document.getElementById('filterSearch').value;
-  const srt = document.getElementById('sortLeads').value;
-
-  let rows = leads.filter(l => {
-    if (q && !l.name.toLowerCase().includes(q) && !l.phone.toLowerCase().includes(q)
-         && !l.address.toLowerCase().includes(q) && !l.category.toLowerCase().includes(q)) return false;
-    if (stF && l._status !== stF) return false;
-    if (caF && l.category !== caF) return false;
-    if (srF && l.searchQuery !== searches.find(s=>s.id==srF)?.query) return false;
-    return true;
-  });
-
-  if (srt === 'hot')    rows.sort((a,b) => (b.isHot?1:0)-(a.isHot?1:0));
-  else if (srt==='name') rows.sort((a,b)=>a.name.localeCompare(b.name));
-  else if (srt==='status') rows.sort((a,b)=>Object.keys(STATUSES).indexOf(a._status)-Object.keys(STATUSES).indexOf(b._status));
-  else if (srt==='recent') rows.sort((a,b)=>new Date(b.addedDate)-new Date(a.addedDate));
-
-  populateCategoryFilter();
-  populateSearchFilter();
-
-  // Update count display
-  const isFiltered = !!(q || stF || caF || srF);
-  const countText = document.getElementById('leadsCountText');
-  const clearBtn = document.getElementById('clearFiltersBtn');
-  if (countText) countText.textContent = isFiltered ? `Showing ${rows.length} of ${leads.length} leads` : `${leads.length} leads saved`;
-  if (clearBtn) clearBtn.style.display = isFiltered ? '' : 'none';
-
-  const grid = document.getElementById('leadsGrid');
-  if (!rows.length) {
-    grid.innerHTML = `<div class="empty-state"><span class="ei">${leads.length?'🔍':'🎯'}</span><p>${leads.length?'No leads match your filters.':'No leads yet. Run a search to find businesses!'}</p></div>`;
-    return;
-  }
-
-  grid.innerHTML = rows.map(l => {
-    const sm = STATUSES[l._status] || STATUSES.none;
-    const lastAct = l._activity && l._activity.length ? l._activity[l._activity.length-1] : null;
-    const fb=l.facebook,ig=l.instagram,li=l.linkedin,tw=l.twitter;
-    const hasSocial = fb||ig||li||tw;
-    return `
-    <div class="lead-card status-${l._status}" onclick="openLead('${l.id}')">
-      <div class="card-top">
-        <div class="card-name">
-          <span class="card-name-text">${esc(l.name)||'<span style="color:var(--text-3);font-weight:400">Unnamed</span>'}</span>
-          ${l.isHot ? '<span class="fire-badge">🔥 Hot</span>' : ''}
-          ${!l.isHot && l.websiteQuality && l.websiteQuality !== 'unchecked' ? `<span class="wq-badge ${WEBSITE_QUALITY[l.websiteQuality]?.badgeClass||''}">${WEBSITE_QUALITY[l.websiteQuality]?.label||''}</span>` : ''}
-        </div>
-        <div class="card-cat">${esc(l.category)}${l.rating?` · ⭐ ${l.rating}${l.reviews?' ('+l.reviews+')':''}`:''}</div>
-      </div>
-      <div class="card-mid">
-        ${l.phone?`<div class="card-info-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.94a16 16 0 0 0 6 6l.94-1.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg><a href="tel:${esc(l.phone)}" onclick="event.stopPropagation()">${esc(l.phone)}</a></div>`:''}
-        ${l.email?`<div class="card-info-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:${esc(l.email)}" onclick="event.stopPropagation()">${esc(l.email)}</a></div>`:''}
-        ${l.address?`<div class="card-info-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:240px">${esc(l.address)}</span></div>`:''}
-      </div>
-      <div class="card-socials">
-        ${hasSocial ? `
-          ${fb?`<a class="s-chip s-fb" href="${url(fb)}" target="_blank" onclick="event.stopPropagation()">f FB</a>`:''}
-          ${ig?`<a class="s-chip s-ig" href="${url(ig)}" target="_blank" onclick="event.stopPropagation()">◉ IG</a>`:''}
-          ${li?`<a class="s-chip s-li" href="${url(li)}" target="_blank" onclick="event.stopPropagation()">in LI</a>`:''}
-          ${tw?`<a class="s-chip s-tw" href="${url(tw)}" target="_blank" onclick="event.stopPropagation()">✕ TW</a>`:''}
-        ` : '<span class="no-social">No social profiles found</span>'}
-      </div>
-      <div class="card-bottom">
-        <span class="status-pill ${sm.cls}">${sm.label}</span>
-        <span class="card-last-note">${lastAct ? lastAct.type+' · '+lastAct.note.slice(0,40)+(lastAct.note.length>40?'…':'') : ''}</span>
-      </div>
+function showResults(results,saved){
+  const wrap=document.getElementById('searchResults');
+  if(!results.length){wrap.innerHTML='<div class="empty"><div class="ico">🔍</div><h3>No results</h3><p>Try a different term or location.</p></div>';return;}
+  const noSite=results.filter(r=>!r.has_website).length;
+  wrap.innerHTML=`
+    <div style="padding:10px 18px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:13px;color:var(--muted)">Found <strong style="color:var(--text)">${results.length}</strong> businesses</span>
+      <span style="font-size:13px;color:var(--green);font-weight:700">⚡ ${noSite} no website</span>
+      <span style="font-size:12px;color:var(--muted2)">${saved} new · ${results.length-saved} already in library</span>
+    </div>
+    <div style="padding:12px 18px">
+      ${results.map(r=>`
+        <div class="sr-card" style="border-left:3px solid ${r.has_website?'var(--red)':'var(--green)'}">
+          <div>
+            <div class="sr-name">${esc(r.business_name)}
+              ${!r.has_website?'<span class="badge b-nosite">NO SITE ⚡</span>':'<span class="badge b-hassite">HAS SITE</span>'}
+              ${r.rating?`<span class="badge b-rate">★ ${r.rating}</span>`:''}
+            </div>
+            <div class="sr-meta">${esc(r.address||'')}${r.phone?' · '+esc(r.phone):''}</div>
+            ${r.category?`<div style="font-size:10px;color:var(--muted2);margin-top:2px">${esc(r.category)}</div>`:''}
+          </div>
+          <span style="background:rgba(79,126,247,.12);color:var(--accent);padding:3px 8px;border-radius:5px;font-size:10px;font-weight:700">Saved ✓</span>
+        </div>`).join('')}
     </div>`;
-  }).join('');
 }
 
-function clearFilters() {
-  document.getElementById('leadsSearch').value = '';
-  document.getElementById('filterStatus').value = '';
-  document.getElementById('filterCategory').value = '';
-  document.getElementById('filterSearch').value = '';
-  document.getElementById('sortLeads').value = 'hot';
-  renderLeads();
+// ── RENDER ────────────────────────────────────────────────────
+function renderAll(){
+  renderStats();renderLeads();
+  document.getElementById('totalCount').textContent=leads.length;
 }
 
-function populateCategoryFilter() {
-  const sel = document.getElementById('filterCategory');
-  const cur = sel.value;
-  const cats = [...new Set(leads.map(l=>l.category).filter(Boolean))].sort();
-  sel.innerHTML = '<option value="">All Categories</option>' + cats.map(c=>`<option value="${esc(c)}"${c===cur?' selected':''}>${esc(c)}</option>`).join('');
-}
-function populateSearchFilter() {
-  const sel = document.getElementById('filterSearch');
-  const cur = sel.value;
-  sel.innerHTML = '<option value="">All Searches</option>' + searches.map(s=>`<option value="${s.id}"${s.id==cur?' selected':''}>${esc(s.query)}</option>`).join('');
+function renderStats(){
+  const counts={};STAGES.forEach(s=>counts[s.id]=leads.filter(l=>l.stage===s.id).length);
+  document.getElementById('statsBar').innerHTML=`
+    <button class="spill" style="color:${stageFilter==='all'?'#fff':'var(--muted)'};border-color:${stageFilter==='all'?'var(--accent)':'var(--border2)'};background:${stageFilter==='all'?'rgba(79,126,247,.12)':'none'}" onclick="setFilter('all')">All (${leads.length})</button>
+    ${STAGES.map(s=>`<button class="spill" style="color:${stageFilter===s.id?s.color:'var(--muted)'};border-color:${stageFilter===s.id?s.color:'var(--border2)'};background:${stageFilter===s.id?s.color+'18':'none'}" onclick="setFilter('${s.id}')">${s.label}${counts[s.id]?' ('+counts[s.id]+')':''}</button>`).join('')}`;
 }
 
-// ═══════════════════════════════════════════════
-//  LEAD MODAL
-// ═══════════════════════════════════════════════
-function openLead(id) {
-  openLeadId = id;
-  tmpStatus = null;
-  tmpWebsiteQuality = null;
-  const l = leads.find(x=>x.id===id);
-  if (!l) return;
+function setFilter(id){stageFilter=id;renderAll();}
 
-  document.getElementById('mName').textContent = l.name || 'Unnamed Business';
-
-  // Badges
-  const badges = document.getElementById('mHeaderBadges');
-  badges.innerHTML = '';
-  if (l.isHot) badges.innerHTML += '<span class="badge badge-fire">🔥 No Website</span>';
-  if (l.category) badges.innerHTML += `<span class="badge badge-grey">${esc(l.category)}</span>`;
-  if (l.rating) badges.innerHTML += `<span class="badge badge-grey">⭐ ${l.rating}${l.reviews?' · '+l.reviews+' reviews':''}</span>`;
-
-  // Info grid
-  document.getElementById('mInfoGrid').innerHTML = `
-    <div class="info-item"><label>Phone</label><div class="val${l.phone?'':' empty'}">${l.phone?`<a href="tel:${esc(l.phone)}">${esc(l.phone)}</a>`:'Not provided'}</div></div>
-    <div class="info-item"><label>Email</label><div class="val${l.email?'':' empty'}">${l.email?`<a href="mailto:${esc(l.email)}">${esc(l.email)}</a>`:'Not provided'}</div></div>
-    <div class="info-item" style="grid-column:1/-1"><label>Address</label><div class="val${l.address?'':' empty'}">${esc(l.address)||'Not provided'}</div></div>
-    <div class="info-item"><label>Website</label><div class="val${l.website?'':' empty'}">${l.website?`<a href="${url(l.website)}" target="_blank">${esc(l.website)}</a>`:'No website ✓'}</div></div>
-    <div class="info-item"><label>Website Quality</label><div class="val"><select onchange="tmpWebsiteQuality=this.value" style="font-size:13px;padding:4px 8px;border:1px solid var(--border);border-radius:6px;background:var(--white);cursor:pointer">${Object.entries(WEBSITE_QUALITY).map(([k,v])=>`<option value="${k}"${(l.websiteQuality||(l.isHot?'nowebsite':'unchecked'))===k?' selected':''}>${v.label}</option>`).join('')}</select></div></div>
-    <div class="info-item"><label>Search</label><div class="val">${esc(l.searchQuery||'—')}</div></div>
-  `;
-
-  // Socials
-  const fb=l.facebook,ig=l.instagram,li=l.linkedin,tw=l.twitter;
-  const socEl = document.getElementById('mSocials');
-  if (fb||ig||li||tw) {
-    socEl.innerHTML = `
-      ${fb?`<a class="s-chip s-fb" href="${url(fb)}" target="_blank">f Facebook</a>`:''}
-      ${ig?`<a class="s-chip s-ig" href="${url(ig)}" target="_blank">◉ Instagram</a>`:''}
-      ${li?`<a class="s-chip s-li" href="${url(li)}" target="_blank">in LinkedIn</a>`:''}
-      ${tw?`<a class="s-chip s-tw" href="${url(tw)}" target="_blank">✕ Twitter/X</a>`:''}`;
-  } else {
-    socEl.innerHTML = '<span style="color:var(--text-3);font-size:13px;font-style:italic">No social profiles found in this search result.</span>';
-  }
-
-  // Status picker
-  document.getElementById('mStatusPicker').innerHTML = Object.entries(STATUSES).map(([k,v])=>
-    `<button class="sp-btn ${v.cls}${l._status===k?' sel':''}" id="spb_${k}" onclick="pickStatus('${k}')">${v.label}</button>`
-  ).join('');
-
-  // Activity
-  renderActivityLog(l);
-
-  // Footer
-  const lastContact = l._activity && l._activity.length ? l._activity[l._activity.length-1].date : null;
-  document.getElementById('mFooterInfo').textContent = lastContact ? `Last contact: ${lastContact}` : 'No contact logged yet';
-
-  // Reset activity form
-  document.getElementById('activityNoteInput').value = '';
-  document.querySelectorAll('.contact-type-btn').forEach(b=>b.classList.remove('sel'));
-  document.querySelector('.contact-type-btn').classList.add('sel');
-  tmpContactType = '📧 Email';
-
-  document.getElementById('leadOverlay').classList.add('open');
-}
-
-function renderActivityLog(l) {
-  const el = document.getElementById('mActivityLog');
-  if (!l._activity || !l._activity.length) {
-    el.innerHTML = '<div class="activity-empty">No contact logged yet. Use the form below to record your first outreach.</div>';
+function renderLeads(){
+  const f=(document.getElementById('filterInput')?.value||'').toLowerCase();
+  const shown=leads.filter(l=>{
+    const ms=stageFilter==='all'||l.stage===stageFilter;
+    const mf=!f||[l.business_name,l.town,l.address,l.contact_name].some(v=>v?.toLowerCase().includes(f));
+    return ms&&mf;
+  });
+  document.getElementById('countLbl').textContent=`${shown.length} lead${shown.length!==1?'s':''}`;
+  if(!shown.length){
+    document.getElementById('leadsList').innerHTML=`<div class="empty"><div class="ico">${leads.length===0?'🎯':'🔍'}</div><h3>${leads.length===0?'No leads yet':'Nothing matches'}</h3><p>${leads.length===0?'Use Hunt to search for businesses,<br>or click + Add to enter one manually.':'Try a different search or filter.'}</p></div>`;
     return;
   }
-  el.innerHTML = [...l._activity].reverse().map(a => `
-    <div class="activity-item">
-      <div class="activity-dot">${a.type.split(' ')[0]}</div>
-      <div class="activity-content">
-        <div class="activity-type">${a.type}</div>
-        ${a.note ? `<div class="activity-note">${esc(a.note)}</div>` : ''}
-        <div class="activity-date">${a.date}</div>
+  document.getElementById('leadsList').innerHTML=shown.map(renderCard).join('');
+}
+
+function renderCard(l){
+  const s=STAGES.find(x=>x.id===l.stage)||STAGES[0];
+  const open=expanded.has(l.id);
+  return `<div class="card" style="border-left-color:${s.color}">
+    <div class="card-hdr" onclick="toggleCard('${l.id}')">
+      <div style="flex:1;min-width:0">
+        <div class="card-name">${esc(l.business_name)}
+          ${l.has_website==='true'||l.has_website===true?'<span class="badge b-hassite">HAS SITE</span>':'<span class="badge b-nosite">NO SITE ⚡</span>'}
+          ${l.rating?`<span class="badge b-rate">★ ${l.rating}</span>`:''}
+        </div>
+        <div class="card-loc">${[l.town,l.address].filter(Boolean).join(' · ')||'—'}</div>
+        ${(l.phone||l.email)?`<div class="card-tel">${l.phone?'📞 '+esc(l.phone):''}${l.phone&&l.email?' · ':''}${l.email?'✉ '+esc(l.email):''}</div>`:''}
       </div>
-    </div>`).join('');
+      <div class="card-acts">
+        <span class="spill-stage" style="background:${s.color}18;color:${s.color}">${s.label}</span>
+        <button class="ico-btn" onclick="event.stopPropagation();openForm('${l.id}')">✏️</button>
+        <button class="ico-btn">${open?'▲':'▼'}</button>
+      </div>
+    </div>
+    <div class="card-body ${open?'open':''}">
+      <div class="detail-grid">
+        ${l.contact_name?`<div class="di"><label>Contact</label><span>${esc(l.contact_name)}</span></div>`:''}
+        ${l.contact_method?`<div class="di"><label>Via</label><span>${esc(l.contact_method)}</span></div>`:''}
+        ${l.last_contact?`<div class="di"><label>Last Contact</label><span>${fmtDate(l.last_contact)}</span></div>`:''}
+        ${l.website?`<div class="di"><label>Website</label><a href="${esc(l.website)}" target="_blank" onclick="event.stopPropagation()">Visit ↗</a></div>`:''}
+        ${l.category?`<div class="di"><label>Category</label><span>${esc(l.category)}</span></div>`:''}
+        ${l.reviews?`<div class="di"><label>Reviews</label><span>${l.reviews}</span></div>`:''}
+        ${l.google_url?`<div class="di"><label>Google</label><a href="${esc(l.google_url)}" target="_blank" onclick="event.stopPropagation()">Maps ↗</a></div>`:''}
+        ${l.facebook?`<div class="di"><label>Facebook</label><span style="color:#3b82f6">✓</span></div>`:''}
+        ${l.instagram?`<div class="di"><label>Instagram</label><span style="color:#ec4899">✓</span></div>`:''}
+      </div>
+      ${l.notes?`<div class="notes-box">${esc(l.notes)}</div>`:''}
+      <div class="mover">
+        <span class="mover-lbl">Move to:</span>
+        ${STAGES.filter(x=>x.id!==l.stage).map(x=>`<button class="mover-btn" style="color:${x.color};border-color:${x.color}44" onclick="event.stopPropagation();moveStage('${l.id}','${x.id}')">${x.label}</button>`).join('')}
+      </div>
+    </div>
+  </div>`;
 }
 
-function pickStatus(s) {
-  tmpStatus = s;
-  Object.keys(STATUSES).forEach(k => {
-    const el = document.getElementById('spb_'+k);
-    if (el) el.classList.toggle('sel', k===s);
-  });
+function toggleCard(id){expanded.has(id)?expanded.delete(id):expanded.add(id);renderLeads();}
+
+async function moveStage(id,stage){
+  const l=leads.find(x=>x.id===id);if(!l)return;
+  l.stage=stage;l.last_contact=new Date().toISOString();
+  renderAll();saveCache(leads);
+  try{await api('/api/leads',{method:'PATCH',body:{id,stage,last_contact:l.last_contact}});toast('Stage updated ✓','ok');}
+  catch{toast('Saved locally','info');}
 }
 
-function logActivity() {
-  const note = document.getElementById('activityNoteInput').value.trim();
-  if (!note && !tmpContactType) return;
-  const l = leads.find(x=>x.id===openLeadId);
-  if (!l) return;
-  if (!l._activity) l._activity = [];
-  l._activity.push({
-    type: tmpContactType,
-    note: note,
-    date: new Date().toLocaleDateString('en-AU',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}),
-  });
-  // Auto-advance status if still none
-  if (l._status === 'none') { l._status = 'contacted'; tmpStatus = 'contacted'; pickStatus('contacted'); }
-  document.getElementById('activityNoteInput').value = '';
-  document.getElementById('mFooterInfo').textContent = `Last contact: ${l._activity[l._activity.length-1].date}`;
-  renderActivityLog(l);
-  save(); renderLeads();
+// ── FORM ──────────────────────────────────────────────────────
+function buildStageGrid(cur){
+  document.getElementById('stageGrid').innerHTML=STAGES.map(s=>`
+    <button class="sg-btn" id="sb-${s.id}"
+      style="border-color:${cur===s.id?s.color:'transparent'};background:${cur===s.id?s.color+'22':''};color:${cur===s.id?s.color:'var(--muted)'}"
+      onclick="pickStage('${s.id}')">${s.label}</button>`).join('');
 }
+function pickStage(id){selStage=id;buildStageGrid(id);}
 
-function saveLeadModal() {
-  const l = leads.find(x=>x.id===openLeadId);
-  if (!l) return;
-  if (tmpStatus) l._status = tmpStatus;
-  if (tmpWebsiteQuality !== null) l.websiteQuality = tmpWebsiteQuality;
-  save(); renderLeads(); renderStats();
-  closeLeadModal();
-}
-
-function closeLeadModal(e) {
-  if (e && e.target !== document.getElementById('leadOverlay')) return;
-  document.getElementById('leadOverlay').classList.remove('open');
-  openLeadId = null; tmpStatus = null;
-}
-
-// ═══════════════════════════════════════════════
-//  STATS
-// ═══════════════════════════════════════════════
-function renderStats() {
-  document.getElementById('stTotal').textContent     = leads.length;
-  document.getElementById('stHot').textContent       = leads.filter(l=>l.isHot).length;
-  document.getElementById('stUntouched').textContent = leads.filter(l=>l._status==='none').length;
-  document.getElementById('stContacted').textContent = leads.filter(l=>l._status==='contacted').length;
-  document.getElementById('stFollowup').textContent  = leads.filter(l=>l._status==='followup').length;
-  document.getElementById('stInterested').textContent= leads.filter(l=>l._status==='interested').length;
-  updateLeadsTabCount();
-}
-function updateLeadsTabCount() {
-  document.getElementById('leadsCount').textContent = leads.length;
-}
-
-// ═══════════════════════════════════════════════
-//  IMPORT / EXPORT
-// ═══════════════════════════════════════════════
-function exportCSV() {
-  if (!leads.length) return alert('No leads to export.');
-  const cols = ['Name','Phone','Email','Website','Website Quality','Address','Category','Facebook','Instagram','LinkedIn','Twitter','Rating','Reviews','Hot Lead','Search','Status','Last Contact','Activity Count'];
-  const rows = leads.map(l => {
-    const lastAct = l._activity && l._activity.length ? l._activity[l._activity.length-1] : null;
-    return [
-      l.name, l.phone, l.email, l.website, WEBSITE_QUALITY[l.websiteQuality]?.label||'Not Checked', l.address, l.category,
-      l.facebook, l.instagram, l.linkedin, l.twitter,
-      l.rating, l.reviews,
-      l.isHot ? 'Yes' : 'No',
-      l.searchQuery,
-      STATUSES[l._status]?.label || '',
-      lastAct ? lastAct.date : '',
-      (l._activity||[]).length,
-    ].map(v => `"${(v||'').toString().replace(/"/g,'""')}"`).join(',');
-  });
-  const blob = new Blob([cols.join(',')+'\n'+rows.join('\n')], {type:'text/csv'});
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = `leadhunter_${new Date().toISOString().split('T')[0]}.csv`;
-  a.click();
-}
-function importCSV() { document.getElementById('importInput').click(); }
-function handleImport(e) {
-  const f = e.target.files[0]; if(!f) return;
-  const r = new FileReader();
-  r.onload = ev => {
-    const lines = ev.target.result.trim().split('\n');
-    const headers = splitCSV(lines[0]);
-    let added = 0;
-    for (let i=1;i<lines.length;i++) {
-      const vals = splitCSV(lines[i]);
-      const obj = {}; headers.forEach((h,j)=>obj[h.trim()]=vals[j]||'');
-      const name = obj['Name']||obj['Business Name']||obj['name']||'';
-      const address = obj['Address']||obj['address']||'';
-      if (!name) continue;
-      const exists = leads.some(l=>l.name===name && l.address===address);
-      if (!exists) {
-        leads.push({
-          id: `imp_${Date.now()}_${Math.random().toString(36).slice(2)}`,
-          name, phone: obj['Phone']||obj['phone']||'',
-          email: obj['Email']||obj['email']||'',
-          website: obj['Website']||obj['website']||'',
-          address, category: obj['Category']||obj['Industry']||obj['industry']||'',
-          facebook: obj['Facebook']||'', instagram: obj['Instagram']||'',
-          linkedin: obj['LinkedIn']||'', twitter: obj['Twitter']||'',
-          rating: null, reviews: null,
-          isHot: !(obj['Website']||obj['website']||'').trim(),
-          searchQuery: 'CSV Import',
-          addedDate: new Date().toISOString(),
-          _status: obj['Status']?Object.entries(STATUSES).find(([k,v])=>v.label===obj['Status'])?.[0]||'none':'none',
-          _activity: [],
-        });
-        added++;
-      }
-    }
-    save(); renderLeads(); renderStats();
-    alert(`Imported ${added} new leads.`);
-  };
-  r.readAsText(f);
-  e.target.value='';
-}
-function splitCSV(line) {
-  const r=[]; let c=''; let q=false;
-  for(let i=0;i<line.length;i++){
-    if(line[i]==='"'){q=!q;}
-    else if(line[i]===','&&!q){r.push(c.trim());c='';}
-    else c+=line[i];
+function openForm(id){
+  const del=document.getElementById('fDel');
+  if(!id){
+    document.getElementById('formTitle').textContent='Add Lead';
+    document.getElementById('fId').value='';
+    ['fName','fTown','fAddr','fPhone','fEmail','fSite','fFB','fIG','fContact','fNotes'].forEach(x=>document.getElementById(x).value='');
+    document.getElementById('fMethod').value='';
+    document.getElementById('fHasSite').checked=false;
+    document.getElementById('fDate').value='';
+    selStage='new';del.style.display='none';
+  }else{
+    const l=leads.find(x=>String(x.id)===String(id));if(!l)return;
+    document.getElementById('formTitle').textContent='Edit Lead';
+    document.getElementById('fId').value=l.id;
+    document.getElementById('fName').value=l.business_name||'';
+    document.getElementById('fTown').value=l.town||'';
+    document.getElementById('fAddr').value=l.address||'';
+    document.getElementById('fPhone').value=l.phone||'';
+    document.getElementById('fEmail').value=l.email||'';
+    document.getElementById('fSite').value=l.website||'';
+    document.getElementById('fFB').value=l.facebook||'';
+    document.getElementById('fIG').value=l.instagram||'';
+    document.getElementById('fContact').value=l.contact_name||'';
+    document.getElementById('fMethod').value=l.contact_method||'';
+    document.getElementById('fHasSite').checked=l.has_website==='true'||l.has_website===true;
+    document.getElementById('fNotes').value=l.notes||'';
+    document.getElementById('fDate').value=l.last_contact?l.last_contact.slice(0,10):'';
+    selStage=l.stage||'new';
+    del.style.display='inline-flex';del.setAttribute('data-id',l.id);
   }
-  r.push(c.trim()); return r;
+  buildStageGrid(selStage);
+  document.getElementById('overlay').classList.add('open');
 }
+function closeForm(){document.getElementById('overlay').classList.remove('open');}
 
-// ═══════════════════════════════════════════════
-//  BACKUP / RESTORE
-// ═══════════════════════════════════════════════
-function exportBackup() {
-  if (!leads.length && !searches.length) return alert('Nothing to backup yet — run a search first.');
-  const backup = {
-    version: 2,
-    exportDate: new Date().toISOString(),
-    appName: 'LeadHunter Pro',
-    leads,
-    searches,
-    settings: { provider: settings.provider, apiKey: settings.apiKey },
+async function saveLead(){
+  const name=document.getElementById('fName').value.trim();
+  if(!name){toast('Business name required','err');return;}
+  const id=document.getElementById('fId').value;
+  const payload={
+    business_name:name,
+    town:document.getElementById('fTown').value.trim(),
+    address:document.getElementById('fAddr').value.trim(),
+    phone:document.getElementById('fPhone').value.trim(),
+    email:document.getElementById('fEmail').value.trim(),
+    website:document.getElementById('fSite').value.trim(),
+    has_website:document.getElementById('fHasSite').checked,
+    facebook:document.getElementById('fFB').value.trim(),
+    instagram:document.getElementById('fIG').value.trim(),
+    contact_name:document.getElementById('fContact').value.trim(),
+    contact_method:document.getElementById('fMethod').value,
+    notes:document.getElementById('fNotes').value.trim(),
+    last_contact:document.getElementById('fDate').value?new Date(document.getElementById('fDate').value).toISOString():'',
+    stage:selStage,
   };
-  const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `leadhunter_backup_${new Date().toISOString().split('T')[0]}.json`;
-  a.click();
-}
-
-function importBackup() {
-  document.getElementById('backupInput').click();
-}
-
-function handleBackupRestore(e) {
-  const f = e.target.files[0];
-  if (!f) return;
-  const r = new FileReader();
-  r.onload = ev => {
-    try {
-      const backup = JSON.parse(ev.target.result);
-      if (!backup.leads || !Array.isArray(backup.leads)) {
-        alert('Invalid backup file. Please select a valid LeadHunter backup (.json).');
-        return;
-      }
-      const backupDate = backup.exportDate ? new Date(backup.exportDate).toLocaleDateString('en-AU') : 'unknown date';
-      if (!confirm(`Restore backup from ${backupDate}?\n\nContains: ${backup.leads.length} leads, ${(backup.searches||[]).length} saved searches.\n\nThis will MERGE with your current data — new leads will be added and nothing will be deleted.\n\nProceed?`)) return;
-
-      let added = 0;
-      backup.leads.forEach(bl => {
-        const exists = leads.some(l =>
-          (bl.place_id && l.place_id === bl.place_id) ||
-          (l.name === bl.name && l.address === bl.address)
-        );
-        if (!exists) { leads.push(bl); added++; }
-      });
-
-      // Merge search history
-      if (backup.searches && Array.isArray(backup.searches)) {
-        backup.searches.forEach(bs => {
-          if (!searches.some(s => s.id === bs.id)) searches.push(bs);
-        });
-        searches.sort((a, b) => b.id - a.id);
-      }
-
-      save();
-      renderLeads();
-      renderHistory();
-      renderStats();
-      alert(`Backup restored! Added ${added} new leads from the backup.`);
-    } catch(err) {
-      alert('Failed to read backup file: ' + err.message);
+  try{
+    if(id){
+      const u=await api('/api/leads',{method:'PATCH',body:{id,...payload}});
+      const i=leads.findIndex(x=>String(x.id)===String(id));
+      if(i>=0)leads[i]={...leads[i],...u};
+      toast('Updated ✓','ok');
+    }else{
+      const c=await api('/api/leads',{method:'POST',body:payload});
+      leads.unshift(c);
+      toast('Lead added ✓','ok');
     }
-  };
-  r.readAsText(f);
-  e.target.value = '';
+  }catch{
+    if(id){const i=leads.findIndex(x=>String(x.id)===String(id));if(i>=0)leads[i]={...leads[i],...payload};}
+    else leads.unshift({id:Date.now().toString(),...payload,created_at:new Date().toISOString()});
+    toast('Saved locally','info');
+  }
+  saveCache(leads);renderAll();closeForm();
 }
 
-// ═══════════════════════════════════════════════
-//  PERSIST
-// ═══════════════════════════════════════════════
-function save() {
-  try {
-    localStorage.setItem('lhp_leads',    JSON.stringify(leads));
-    localStorage.setItem('lhp_searches', JSON.stringify(searches));
-  } catch(e) { console.warn('Storage full?', e); }
+async function doDelete(){
+  const id=document.getElementById('fDel').getAttribute('data-id');
+  if(!confirm('Delete this lead?'))return;
+  leads=leads.filter(x=>String(x.id)!==String(id));
+  saveCache(leads);renderAll();closeForm();
+  try{await api(`/api/leads?id=${id}`,{method:'DELETE'});}catch{}
+  toast('Deleted','ok');
 }
 
-// ═══════════════════════════════════════════════
-//  UTILS
-// ═══════════════════════════════════════════════
-function esc(s) { return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function url(u) { return /^https?:\/\//i.test(u||'') ? u : 'https://'+u; }
-function setCategory(cat) {
-  document.getElementById('searchCategory').value = cat;
-  document.getElementById('searchLocation').focus();
+// ── EXPORT ────────────────────────────────────────────────────
+function exportCSV(){
+  const cols=['Business','Town','Address','Phone','Email','Has Website','Website','Facebook','Instagram','Contact','Method','Stage','Last Contact','Rating','Notes'];
+  const rows=leads.map(l=>[l.business_name,l.town,l.address,l.phone,l.email,(l.has_website==='true'||l.has_website===true)?'Yes':'No',l.website,l.facebook,l.instagram,l.contact_name,l.contact_method,STAGES.find(s=>s.id===l.stage)?.label||l.stage,fmtDate(l.last_contact),l.rating,l.notes?.replace(/\n/g,' ')]);
+  const csv=[cols,...rows].map(r=>r.map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download=`leads-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();toast(`${leads.length} leads exported`,'ok');
 }
 
-// ── Boot ──
-init();
+// ── UTILS ─────────────────────────────────────────────────────
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmtDate(iso){if(!iso)return'—';try{return new Date(iso).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}catch{return'—';}}
+let toastT;
+function toast(msg,type='ok'){const t=document.getElementById('toast');t.textContent=msg;t.className=`toast ${type} show`;clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2800);}
 
-// ── Service Worker (offline / installable PWA) ──
-if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+function switchTab(name){
+  ['hunt','pipeline','settings'].forEach((t,i)=>{
+    document.getElementById(`tab-${t}`).style.display=t===name?'':'none';
+    document.querySelectorAll('.tab')[i].classList.toggle('active',t===name);
+  });
+  if(name==='pipeline')renderAll();
+  if(name==='settings'){loadSettingsUI();checkDb();}
 }
 
-// ── Detect file:// and warn ──
-if (location.protocol === 'file:') {
-  const warn = document.createElement('div');
-  warn.style.cssText = 'background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:10px 20px;font-size:13px;text-align:center;position:sticky;top:58px;z-index:199';
-  warn.innerHTML = '⚠️ Running locally — searches won\'t work from a file. <b>Use the online version</b> at <a href="https://aeonreon.github.io/leadhunter-pro/" style="color:#2563eb">aeonreon.github.io/leadhunter-pro</a>, or run <code style="background:#fef3c7;padding:2px 6px;border-radius:3px">python3 -m http.server 8080</code> in this folder then open <a href="http://localhost:8080" style="color:#2563eb">localhost:8080</a>';
-  document.body.insertBefore(warn, document.body.firstChild);
-}
+function clearCache(){if(!confirm('Clear local cache?'))return;localStorage.removeItem('lh_cache');leads=[];renderAll();toast('Cache cleared','ok');}
+
+// ── INIT ──────────────────────────────────────────────────────
+loadSettingsUI();
+loadLeads();
 </script>
 </body>
 </html>

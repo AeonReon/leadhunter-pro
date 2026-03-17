@@ -1,19 +1,15 @@
 {
-  "name": "LeadHunter Pro",
+  "name": "LeadHunter · realfastwebsite.com",
   "short_name": "LeadHunter",
-  "description": "Find and manage business leads — scrape Google Maps for businesses without websites",
-  "start_url": ".",
-  "scope": ".",
+  "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#f5f4f0",
-  "theme_color": "#f97316",
+  "background_color": "#080a10",
+  "theme_color": "#080a10",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f97316'/><text y='.9em' font-size='80' x='10'>🔥</text></svg>",
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/svg+xml"
     }
   ]
 }
