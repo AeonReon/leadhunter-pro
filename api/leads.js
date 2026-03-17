@@ -1,5 +1,5 @@
 // api/leads.js
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -11,12 +11,14 @@ export default async function handler(req, res) {
   Object.entries(CORS).forEach(([k, v]) => res.setHeader(k, v));
   if (req.method === 'OPTIONS') return res.status(200).end();
 
+  const redis = Redis.fromEnv();
+
   // GET all leads
   if (req.method === 'GET') {
     try {
-      const keys = await kv.lrange('lead_ids', 0, -1);
+      const keys = await redis.lrange('lead_ids', 0, -1);
       if (!keys.length) return res.status(200).json([]);
-      const leads = await Promise.all(keys.map(k => kv.hgetall(`lead:${k}`)));
+      const leads = await Promise.all(keys.map(k => redis.hgetall(`lead:${k}`)));
       const valid = leads.filter(Boolean).sort((a, b) =>
         new Date(b.created_at || 0) - new Date(a.created_at || 0)
       );
@@ -32,8 +34,8 @@ export default async function handler(req, res) {
       const body = req.body;
       const id = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
       const lead = { ...body, id, created_at: new Date().toISOString() };
-      await kv.hset(`lead:${id}`, lead);
-      await kv.lpush('lead_ids', id);
+      await redis.hset(`lead:${id}`, lead);
+      await redis.lpush('lead_ids', id);
       return res.status(201).json(lead);
     } catch (e) {
       return res.status(500).json({ error: e.message });
@@ -46,10 +48,10 @@ export default async function handler(req, res) {
       const { id, ...updates } = req.body;
       if (!id) return res.status(400).json({ error: 'id required' });
       updates.updated_at = new Date().toISOString();
-      const existing = await kv.hgetall(`lead:${id}`);
+      const existing = await redis.hgetall(`lead:${id}`);
       if (!existing) return res.status(404).json({ error: 'not found' });
       const updated = { ...existing, ...updates };
-      await kv.hset(`lead:${id}`, updated);
+      await redis.hset(`lead:${id}`, updated);
       return res.status(200).json(updated);
     } catch (e) {
       return res.status(500).json({ error: e.message });
@@ -61,8 +63,8 @@ export default async function handler(req, res) {
     try {
       const { id } = req.query;
       if (!id) return res.status(400).json({ error: 'id required' });
-      await kv.del(`lead:${id}`);
-      await kv.lrem('lead_ids', 0, id);
+      await redis.del(`lead:${id}`);
+      await redis.lrem('lead_ids', 0, id);
       return res.status(200).json({ deleted: true });
     } catch (e) {
       return res.status(500).json({ error: e.message });

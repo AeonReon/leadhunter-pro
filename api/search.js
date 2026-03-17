@@ -1,5 +1,5 @@
 // api/search.js
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -16,6 +16,8 @@ export default async function handler(req, res) {
 
   const serpApiKey = process.env.SERPAPI_KEY;
   if (!serpApiKey) return res.status(500).json({ error: 'SERPAPI_KEY not set in Vercel environment variables' });
+
+  const redis = Redis.fromEnv();
 
   try {
     const searchQuery = `${query} ${location || 'Northern Ireland'}`;
@@ -51,13 +53,13 @@ export default async function handler(req, res) {
     let saved = 0;
     for (const lead of results) {
       const dupKey = `dedup:${lead.business_name.toLowerCase().replace(/\s+/g,'')}:${lead.address.toLowerCase().replace(/\s+/g,'')}`;
-      const exists = await kv.get(dupKey);
+      const exists = await redis.get(dupKey);
       if (!exists) {
         const id = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
         const full = { ...lead, id, created_at: new Date().toISOString() };
-        await kv.hset(`lead:${id}`, full);
-        await kv.lpush('lead_ids', id);
-        await kv.set(dupKey, id);
+        await redis.hset(`lead:${id}`, full);
+        await redis.lpush('lead_ids', id);
+        await redis.set(dupKey, id);
         saved++;
       }
     }
