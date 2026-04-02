@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   Object.entries(CORS).forEach(([k, v]) => res.setHeader(k, v));
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  const { query, location } = req.query;
+  const { query, location, start } = req.query;
   if (!query) return res.status(400).json({ error: 'query required' });
 
   const serpApiKey = process.env.SERPAPI_KEY;
@@ -21,7 +21,8 @@ export default async function handler(req, res) {
 
   try {
     const searchQuery = `${query} ${location || 'Northern Ireland'}`;
-    const url = `https://serpapi.com/search.json?engine=google_maps&q=${encodeURIComponent(searchQuery)}&type=search&api_key=${serpApiKey}`;
+    const startParam = parseInt(start) || 0;
+    const url = `https://serpapi.com/search.json?engine=google_maps&q=${encodeURIComponent(searchQuery)}&type=search&start=${startParam}&api_key=${serpApiKey}`;
 
     const response = await fetch(url);
     const data = await response.json();

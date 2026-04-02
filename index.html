@@ -165,6 +165,52 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
 .sp-notinterested{color:var(--red);background:var(--red-bg);border-color:var(--red-border)}
 .card-last-note{font-size:11px;color:var(--muted2);font-style:italic;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
+/* PIPELINE */
+.pipe-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pipe-col{background:var(--surface);border:1px solid var(--border);border-radius:12px;min-height:200px;display:flex;flex-direction:column}
+.pipe-col-head{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.pipe-col-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px}
+.pipe-col-count{font-size:11px;font-weight:700;padding:2px 8px;border-radius:100px;border:1px solid}
+.pipe-col-body{padding:8px;flex:1;display:flex;flex-direction:column;gap:6px;overflow-y:auto;max-height:calc(100vh - 200px)}
+.pipe-card{background:var(--card);border:1px solid var(--border2);border-radius:9px;padding:10px 12px;cursor:pointer;transition:all .15s}
+.pipe-card:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.pipe-card-name{font-weight:600;font-size:13px;color:var(--ink);margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pipe-card-cat{font-size:10px;color:var(--muted2);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.pipe-card-note{font-size:11px;color:var(--muted);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:4px}
+.pipe-card-date{font-size:10px;color:var(--muted2)}
+.pipe-card-hot{display:inline-flex;align-items:center;gap:3px;background:var(--fire-bg);color:var(--fire);border:1px solid var(--fire-border);border-radius:5px;font-size:9px;font-weight:700;padding:1px 5px;margin-left:6px}
+.pipe-empty{padding:24px;text-align:center;color:var(--muted2);font-size:12px;font-style:italic}
+.pipe-card.overdue{border-color:var(--fire-border);background:var(--fire-bg)}
+.pipe-card-followup{font-size:10px;font-weight:600;margin-top:3px;display:flex;align-items:center;gap:4px}
+.pipe-card-followup.due-ok{color:var(--green)}
+.pipe-card-followup.due-soon{color:var(--amber)}
+.pipe-card-followup.due-overdue{color:var(--fire)}
+
+/* NEEDS ATTENTION BANNER */
+.attention-banner{background:var(--surface);border:1px solid var(--fire-border);border-radius:12px;margin-bottom:18px;overflow:hidden}
+.attention-header{padding:12px 16px;background:var(--fire-bg);border-bottom:1px solid var(--fire-border);display:flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--fire)}
+.attention-body{padding:8px;display:flex;flex-direction:column;gap:6px}
+.attention-card{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--card);border:1px solid var(--border2);border-radius:8px;cursor:pointer;transition:all .15s}
+.attention-card:hover{border-color:var(--fire);transform:translateY(-1px)}
+.attention-card-name{font-weight:600;font-size:13px;color:var(--ink);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.attention-card-reason{font-size:11px;color:var(--fire);font-weight:600;white-space:nowrap}
+
+/* FOLLOW-UP DATE IN MODAL */
+.followup-date-row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.followup-date-row label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.followup-date-row input[type="date"]{background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:inherit;font-size:13px;padding:6px 10px;border-radius:7px;outline:none}
+.followup-date-row input[type="date"]:focus{border-color:var(--accent)}
+.followup-date-row .fu-clear{background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;font-family:inherit}
+.followup-date-row .fu-clear:hover{color:var(--red)}
+
+/* DUP SEARCH WARNING */
+.dup-warn{background:var(--amber-bg);border:1px solid var(--amber-border);border-radius:10px;padding:11px 16px;margin-bottom:14px;font-size:13px;color:var(--amber);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dup-warn button{background:none;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:0;font-family:inherit}
+.dup-warn .dup-go{color:var(--fire)}
+.dup-warn .dup-cancel{color:var(--muted);margin-left:auto}
+
+@media(max-width:900px){.pipe-cols{grid-template-columns:1fr}}
+
 /* EMPTY */
 .empty-state{grid-column:1/-1;text-align:center;padding:52px 20px;color:var(--muted2)}
 .empty-state .ei{font-size:40px;display:block;margin-bottom:10px}
@@ -269,6 +315,7 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
   <div class="nav-tabs">
     <button class="nav-tab active" onclick="showPage('search',this)">🔍 Search</button>
     <button class="nav-tab" onclick="showPage('leads',this)" id="leadsTab">🎯 My Leads <span class="tab-count" id="leadsCount">0</span></button>
+    <button class="nav-tab" onclick="showPage('pipeline',this)">📋 Pipeline <span class="tab-count" id="pipeCount" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border)">0</span></button>
   </div>
   <div class="nav-right">
     <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇ <span>CSV</span></button>
@@ -291,6 +338,14 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
       <div class="field-group">
         <label>Location</label>
         <input class="field-input" id="searchLocation" type="text" placeholder="e.g. Coleraine, Belfast, London…" value="Northern Ireland" onkeydown="if(event.key==='Enter')doSearch()">
+      </div>
+      <div class="field-group">
+        <label>Search Depth</label>
+        <select class="field-input" id="searchDepth">
+          <option value="1">Quick — ~20 results (1 credit)</option>
+          <option value="3">Standard — ~60 results (3 credits)</option>
+          <option value="5" selected>Deep — ~100 results (5 credits)</option>
+        </select>
       </div>
       <button class="btn btn-fire" id="searchBtn" onclick="doSearch()" style="height:42px;align-self:end">🔍 Search</button>
     </div>
@@ -317,6 +372,11 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
     </div>
   </div>
 
+  <div class="dup-warn" id="dupWarn" style="display:none">
+    <span id="dupWarnText"></span>
+    <button class="dup-go" onclick="doSearch(true)">Search anyway</button>
+    <button class="dup-cancel" onclick="document.getElementById('dupWarn').style.display='none'">✕</button>
+  </div>
   <div class="search-loading" id="searchLoading" style="display:none">
     <span class="sl-icon">🔍</span>
     <h3>Searching Google Maps…</h3>
@@ -410,6 +470,19 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
   </div>
 </div>
 
+<!-- PIPELINE PAGE -->
+<div class="page" id="page-pipeline">
+  <div style="margin-bottom:18px">
+    <h2 style="font-family:'Syne',sans-serif;font-size:19px;font-weight:800;color:var(--ink);margin-bottom:4px">Outreach Pipeline</h2>
+    <p style="font-size:13px;color:var(--muted)">Everyone you've engaged with, organised by status.</p>
+  </div>
+  <div class="attention-banner" id="attentionBanner" style="display:none">
+    <div class="attention-header">⚠ Needs Attention</div>
+    <div class="attention-body" id="attentionList"></div>
+  </div>
+  <div class="pipe-cols" id="pipeCols"></div>
+</div>
+
 <!-- LEAD DETAIL MODAL -->
 <div class="overlay" id="leadOverlay" onclick="closeModal(event)">
 <div class="modal">
@@ -420,7 +493,9 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
   <div class="modal-body">
     <div class="modal-section"><div class="modal-section-title">Contact Info</div><div class="info-grid" id="mInfo"></div></div>
     <div class="modal-section"><div class="modal-section-title">Social Media</div><div id="mSocials" style="display:flex;gap:6px;flex-wrap:wrap"></div></div>
-    <div class="modal-section"><div class="modal-section-title">Status</div><div class="status-picker" id="mStatus"></div></div>
+    <div class="modal-section"><div class="modal-section-title">Status</div><div class="status-picker" id="mStatus"></div>
+      <div class="followup-date-row"><label>Follow up by:</label><input type="date" id="mFollowup" onchange="tmpFollowup=this.value"><button class="fu-clear" onclick="document.getElementById('mFollowup').value='';tmpFollowup=''">Clear</button><span id="mFollowupLabel" style="font-size:11px;font-weight:600"></span></div>
+    </div>
     <div class="modal-section"><div class="modal-section-title">Outreach History</div><div class="activity-log" id="mLog"></div></div>
     <div class="modal-section">
       <div class="modal-section-title">Log Contact</div>
@@ -451,7 +526,7 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
 <div class="toast" id="toast"></div>
 
 <script>
-let leads=[], searches=[], openId=null, tmpStatus=null, tmpCT='📧 Email';
+let leads=[], searches=[], openId=null, tmpStatus=null, tmpCT='📧 Email', tmpFollowup=null;
 const ST={none:{l:'Not Contacted',c:'sp-none'},contacted:{l:'Contacted',c:'sp-contacted'},followup:{l:'Follow Up',c:'sp-followup'},interested:{l:'Interested',c:'sp-interested'},notinterested:{l:'Not Interested',c:'sp-notinterested'}};
 
 async function api(p,o={}){const r=await fetch(p,{headers:{'Content-Type':'application/json'},...o,body:o.body?JSON.stringify(o.body):undefined});return r.json();}
@@ -475,26 +550,50 @@ function rebuildHistory(){
   sSCache(searches);
 }
 
-function showPage(id,tab){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');if(tab)tab.classList.add('active');if(id==='leads')renderLeads();}
+function showPage(id,tab){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');if(tab)tab.classList.add('active');if(id==='leads')renderLeads();if(id==='pipeline')renderPipeline();}
 
-async function doSearch(){
+async function doSearch(force){
   const cat=document.getElementById('searchCategory').value.trim();
   const loc=document.getElementById('searchLocation').value.trim();
   if(!cat||!loc){toast('Enter category and location','err');return;}
+  document.getElementById('dupWarn').style.display='none';
+  if(!force){
+    const q=`${cat} ${loc}`.toLowerCase();
+    const dup=searches.find(s=>(s.query||'').toLowerCase()===q);
+    if(dup){
+      const d=dup.date||'';
+      document.getElementById('dupWarnText').textContent=`⚠ You already searched "${dup.query}" (${d} · ${dup.total} found). Search again?`;
+      document.getElementById('dupWarn').style.display='';
+      return;
+    }
+  }
+  const pages=parseInt(document.getElementById('searchDepth').value)||1;
   const btn=document.getElementById('searchBtn');btn.disabled=true;btn.innerHTML='<div class="spinner"></div> Searching…';
-  document.getElementById('searchLoading').style.display='';document.getElementById('searchHistory').style.display='none';
+  const loadEl=document.getElementById('searchLoading');
+  const loadMsg=loadEl.querySelector('p');
+  loadEl.style.display='';document.getElementById('searchHistory').style.display='none';
   try{
-    const d=await api(`/api/search?query=${encodeURIComponent(cat)}&location=${encodeURIComponent(loc)}`);
-    if(d.error){toast(d.error,'err');return;}
+    let totalFound=0, totalSaved=0, allResults=[], noWeb=0;
+    for(let p=0;p<pages;p++){
+      const start=p*20;
+      loadMsg.textContent=`Page ${p+1} of ${pages} — finding businesses…`;
+      const d=await api(`/api/search?query=${encodeURIComponent(cat)}&location=${encodeURIComponent(loc)}&start=${start}`);
+      if(d.error){toast(d.error,'err');return;}
+      totalFound+=d.total||0;
+      totalSaved+=d.saved||0;
+      allResults=allResults.concat(d.results||[]);
+      if((d.total||0)<20)break; // no more pages
+    }
+    noWeb=allResults.filter(r=>!r.has_website).length;
     const fresh=await api('/api/leads');if(Array.isArray(fresh)){leads=fresh;sCache(leads);}
-    const sr={id:Date.now(),query:`${cat} ${loc}`,category:cat,location:loc,date:new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}),total:d.total||0,noWebsite:(d.results||[]).filter(r=>!r.has_website).length,added:d.saved||0};
+    const sr={id:Date.now(),query:`${cat} ${loc}`,category:cat,location:loc,date:new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}),total:totalFound,noWebsite:noWeb,added:totalSaved};
     searches.unshift(sr);sSCache(searches);renderAll();
     showPage('leads',document.querySelectorAll('.nav-tab')[1]);
     const ban=document.getElementById('resultsBanner'),bt=document.getElementById('resultsBannerText');
-    bt.textContent=`✓ Found ${d.total} businesses (${sr.noWebsite} no website). ${d.saved} new leads saved.`;ban.style.display='';
-    toast(`${d.total} found · ${d.saved} new saved ✓`,'ok');
+    bt.textContent=`✓ Found ${totalFound} businesses (${noWeb} no website). ${totalSaved} new leads saved.`;ban.style.display='';
+    toast(`${totalFound} found · ${totalSaved} new saved ✓`,'ok');
   }catch(e){toast('Search error: '+e.message,'err');}
-  finally{btn.disabled=false;btn.innerHTML='🔍 Search';document.getElementById('searchLoading').style.display='none';document.getElementById('searchHistory').style.display='';}
+  finally{btn.disabled=false;btn.innerHTML='🔍 Search';loadEl.style.display='none';document.getElementById('searchHistory').style.display='';}
 }
 
 function setCat(c){document.getElementById('searchCategory').value=c;document.getElementById('searchLocation').focus();}
@@ -506,7 +605,67 @@ function renderHistory(){
 }
 
 function viewSearch(q){showPage('leads',document.querySelectorAll('.nav-tab')[1]);document.getElementById('leadsSearch').value=q;renderLeads();}
-function renderAll(){renderStats();renderLeads();renderHistory();document.getElementById('leadsCount').textContent=leads.length;}
+function renderAll(){renderStats();renderLeads();renderHistory();renderPipeline();document.getElementById('leadsCount').textContent=leads.length;}
+
+function fuStatus(l){
+  if(!l._followup)return null;
+  const diff=Math.ceil((new Date(l._followup)-new Date().setHours(0,0,0,0))/(86400000));
+  if(diff<0)return{cls:'due-overdue',text:`${Math.abs(diff)}d overdue`};
+  if(diff===0)return{cls:'due-soon',text:'Due today'};
+  if(diff<=2)return{cls:'due-soon',text:`Due in ${diff}d`};
+  return{cls:'due-ok',text:`Due in ${diff}d`};
+}
+
+function renderPipeline(){
+  const today=new Date().setHours(0,0,0,0);
+  const cols=[
+    {key:'contacted',label:'Contacted',icon:'📞',color:'blue'},
+    {key:'followup',label:'Follow Up',icon:'🔄',color:'amber'},
+    {key:'interested',label:'Interested',icon:'✅',color:'green'},
+    {key:'notinterested',label:'Not Interested',icon:'❌',color:'red'}
+  ];
+  let pipeTotal=0;
+
+  // Needs Attention: overdue follow-ups + contacted 7+ days ago with no update
+  const attentionLeads=[];
+  leads.forEach(l=>{
+    const st=l._status||l.stage||'none';
+    if(st==='none'||st==='new'||st==='notinterested')return;
+    if(l._followup&&new Date(l._followup)<today){attentionLeads.push({l,reason:'Overdue follow-up'});return;}
+    if(st==='contacted'&&l._activity&&l._activity.length){
+      const last=l._activity[l._activity.length-1];
+      if(last.date){
+        const parsed=Date.parse(last.date.replace(/(\d{2}) (\w{3}) (\d{4}).*/, '$2 $1, $3'));
+        if(!isNaN(parsed)&&(today-parsed)>7*86400000)attentionLeads.push({l,reason:'No update in 7+ days'});
+      }
+    }
+  });
+  const ab=document.getElementById('attentionBanner'),al=document.getElementById('attentionList');
+  if(attentionLeads.length){
+    ab.style.display='';
+    al.innerHTML=attentionLeads.map(a=>`<div class="attention-card" onclick="openLead('${a.l.id}')"><span class="attention-card-name">${esc(a.l.business_name||'')}</span><span class="attention-card-reason">${a.reason}</span></div>`).join('');
+  }else{ab.style.display='none';}
+
+  const html=cols.map(c=>{
+    const items=leads.filter(l=>(l._status||l.stage)===c.key);
+    pipeTotal+=items.length;
+    items.sort((a,b)=>{
+      if(a._followup&&b._followup)return a._followup.localeCompare(b._followup);
+      if(a._followup)return -1;if(b._followup)return 1;
+      const aD=(a._activity&&a._activity.length)?a._activity[a._activity.length-1].date:'';
+      const bD=(b._activity&&b._activity.length)?b._activity[b._activity.length-1].date:'';
+      return(bD||'').localeCompare(aD||'');
+    });
+    return `<div class="pipe-col"><div class="pipe-col-head"><span class="pipe-col-title">${c.icon} ${c.label}</span><span class="pipe-col-count" style="color:var(--${c.color});background:var(--${c.color}-bg);border-color:var(--${c.color}-border)">${items.length}</span></div><div class="pipe-col-body">${items.length?items.map(l=>{
+      const la=l._activity&&l._activity.length?l._activity[l._activity.length-1]:null;
+      const fu=fuStatus(l);
+      const isOverdue=fu&&fu.cls==='due-overdue';
+      return `<div class="pipe-card${isOverdue?' overdue':''}" onclick="openLead('${l.id}')"><div class="pipe-card-name">${esc(l.business_name||'')}${hot(l)?'<span class="pipe-card-hot">🔥 Hot</span>':''}</div><div class="pipe-card-cat">${esc(l.category||'')}</div>${la&&la.note?`<div class="pipe-card-note">${esc(la.note)}</div>`:''}${la?`<div class="pipe-card-date">${la.type} · ${la.date}</div>`:''}${fu?`<div class="pipe-card-followup ${fu.cls}">⏰ ${fu.text}</div>`:''}</div>`;
+    }).join(''):'<div class="pipe-empty">No leads here yet</div>'}</div></div>`;
+  }).join('');
+  document.getElementById('pipeCols').innerHTML=html;
+  document.getElementById('pipeCount').textContent=pipeTotal;
+}
 
 function renderLeads(){
   const q=(document.getElementById('leadsSearch')?.value||'').toLowerCase(),stF=document.getElementById('filterStatus')?.value||'',caF=document.getElementById('filterCategory')?.value||'',srt=document.getElementById('sortLeads')?.value||'hot';
@@ -561,6 +720,10 @@ function openLead(id){
   document.getElementById('mFooter').textContent=la?`Last contact: ${la.date}`:'No contact logged yet';
   document.getElementById('actNote').value='';
   document.querySelectorAll('.contact-type-btn').forEach(x=>x.classList.remove('sel'));document.querySelector('.contact-type-btn').classList.add('sel');tmpCT='📧 Email';
+  tmpFollowup=l._followup||'';
+  document.getElementById('mFollowup').value=tmpFollowup;
+  const fuLabel=document.getElementById('mFollowupLabel');
+  if(tmpFollowup){const diff=Math.ceil((new Date(tmpFollowup)-new Date().setHours(0,0,0,0))/(86400000));fuLabel.textContent=diff<0?`${Math.abs(diff)} days overdue`:diff===0?'Due today':`In ${diff} days`;fuLabel.style.color=diff<0?'var(--fire)':diff<=2?'var(--amber)':'var(--green)';}else{fuLabel.textContent='';}
   document.getElementById('leadOverlay').classList.add('open');
 }
 
@@ -569,7 +732,7 @@ function pickSt(s){tmpStatus=s;Object.keys(ST).forEach(k=>{const el=document.get
 
 async function logActivity(){const note=document.getElementById('actNote').value.trim();if(!note&&!tmpCT)return;const l=leads.find(x=>x.id===openId);if(!l)return;if(!l._activity)l._activity=[];l._activity.push({type:tmpCT,note,date:new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})});if((l._status||'none')==='none'||(l._status||l.stage)==='new'){l._status='contacted';tmpStatus='contacted';pickSt('contacted');}document.getElementById('actNote').value='';document.getElementById('mFooter').textContent=`Last contact: ${l._activity[l._activity.length-1].date}`;renderLog(l);sCache(leads);renderLeads();try{await api('/api/leads',{method:'PATCH',body:{id:l.id,_activity:l._activity,_status:l._status}});}catch{}toast('Activity logged ✓','ok');}
 
-async function saveModal(){const l=leads.find(x=>x.id===openId);if(!l)return;if(tmpStatus)l._status=tmpStatus;sCache(leads);renderLeads();renderStats();try{await api('/api/leads',{method:'PATCH',body:{id:l.id,_status:l._status,_activity:l._activity}});}catch{}closeModal();toast('Saved ✓','ok');}
+async function saveModal(){const l=leads.find(x=>x.id===openId);if(!l)return;if(tmpStatus)l._status=tmpStatus;l._followup=tmpFollowup||'';sCache(leads);renderLeads();renderStats();renderPipeline();try{await api('/api/leads',{method:'PATCH',body:{id:l.id,_status:l._status,_activity:l._activity,_followup:l._followup}});}catch{}closeModal();toast('Saved ✓','ok');}
 function closeModal(e){if(e&&e.target!==document.getElementById('leadOverlay'))return;document.getElementById('leadOverlay').classList.remove('open');openId=null;tmpStatus=null;}
 async function deleteLead(){if(!confirm('Delete this lead?'))return;const id=openId;leads=leads.filter(x=>x.id!==id);sCache(leads);renderAll();closeModal();try{await api(`/api/leads?id=${id}`,{method:'DELETE'});}catch{}toast('Deleted','ok');}
 
