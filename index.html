@@ -426,6 +426,7 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
   <div class="results-banner" id="resultsBanner" style="display:none">
     <span id="resultsBannerText"></span>
     <button onclick="clearFilters();document.getElementById('resultsBanner').style.display='none'">View all leads →</button>
+    <button id="exportFoldersBtn" onclick="exportForFolders()" style="display:none;background:var(--fire-bg);color:var(--fire);border:1px solid var(--fire-border);padding:4px 10px;border-radius:6px;font-weight:700;cursor:pointer;font-family:inherit;font-size:12px">📁 Export for Folders</button>
     <button onclick="document.getElementById('resultsBanner').style.display='none'" style="margin-left:auto;color:var(--muted)">✕</button>
   </div>
 
@@ -526,7 +527,7 @@ select.field-input{cursor:pointer;appearance:none;background-image:url("data:ima
 <div class="toast" id="toast"></div>
 
 <script>
-let leads=[], searches=[], openId=null, tmpStatus=null, tmpCT='📧 Email', tmpFollowup=null;
+let leads=[], searches=[], openId=null, tmpStatus=null, tmpCT='📧 Email', tmpFollowup=null, lastSearchQuery='';
 const ST={none:{l:'Not Contacted',c:'sp-none'},contacted:{l:'Contacted',c:'sp-contacted'},followup:{l:'Follow Up',c:'sp-followup'},interested:{l:'Interested',c:'sp-interested'},notinterested:{l:'Not Interested',c:'sp-notinterested'}};
 
 async function api(p,o={}){const r=await fetch(p,{headers:{'Content-Type':'application/json'},...o,body:o.body?JSON.stringify(o.body):undefined});return r.json();}
@@ -590,7 +591,9 @@ async function doSearch(force){
     searches.unshift(sr);sSCache(searches);renderAll();
     showPage('leads',document.querySelectorAll('.nav-tab')[1]);
     const ban=document.getElementById('resultsBanner'),bt=document.getElementById('resultsBannerText');
+    lastSearchQuery=`${cat} ${loc}`;
     bt.textContent=`✓ Found ${totalFound} businesses (${noWeb} no website). ${totalSaved} new leads saved.`;ban.style.display='';
+    document.getElementById('exportFoldersBtn').style.display='';
     toast(`${totalFound} found · ${totalSaved} new saved ✓`,'ok');
   }catch(e){toast('Search error: '+e.message,'err');}
   finally{btn.disabled=false;btn.innerHTML='🔍 Search';loadEl.style.display='none';document.getElementById('searchHistory').style.display='';}
@@ -604,7 +607,7 @@ function renderHistory(){
   el.innerHTML=searches.slice(0,20).map(s=>`<div class="sh-item" onclick="viewSearch('${esc(s.query)}')"><div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0"><span style="font-size:18px;flex-shrink:0">🔍</span><div><div class="sh-query">${esc(s.query)}</div><div class="sh-meta">${s.date||fmtD(s.date)}${s.added!==undefined?' · '+s.added+' new':''}</div></div></div><div class="sh-badges"><span class="badge badge-fire">🔥 ${s.noWebsite}</span><span class="badge badge-blue">${s.total} found</span></div></div>`).join('');
 }
 
-function viewSearch(q){showPage('leads',document.querySelectorAll('.nav-tab')[1]);document.getElementById('leadsSearch').value=q;renderLeads();}
+function viewSearch(q){showPage('leads',document.querySelectorAll('.nav-tab')[1]);document.getElementById('leadsSearch').value=q;lastSearchQuery=q;document.getElementById('exportFoldersBtn').style.display='';document.getElementById('resultsBanner').style.display='';document.getElementById('resultsBannerText').textContent=`Viewing: ${q}`;renderLeads();}
 function renderAll(){renderStats();renderLeads();renderHistory();renderPipeline();document.getElementById('leadsCount').textContent=leads.length;}
 
 function fuStatus(l){
@@ -735,6 +738,18 @@ async function logActivity(){const note=document.getElementById('actNote').value
 async function saveModal(){const l=leads.find(x=>x.id===openId);if(!l)return;if(tmpStatus)l._status=tmpStatus;l._followup=tmpFollowup||'';sCache(leads);renderLeads();renderStats();renderPipeline();try{await api('/api/leads',{method:'PATCH',body:{id:l.id,_status:l._status,_activity:l._activity,_followup:l._followup}});}catch{}closeModal();toast('Saved ✓','ok');}
 function closeModal(e){if(e&&e.target!==document.getElementById('leadOverlay'))return;document.getElementById('leadOverlay').classList.remove('open');openId=null;tmpStatus=null;}
 async function deleteLead(){if(!confirm('Delete this lead?'))return;const id=openId;leads=leads.filter(x=>x.id!==id);sCache(leads);renderAll();closeModal();try{await api(`/api/leads?id=${id}`,{method:'DELETE'});}catch{}toast('Deleted','ok');}
+
+function exportForFolders(){
+  if(!lastSearchQuery){toast('Run a search first','err');return;}
+  const sq=lastSearchQuery.toLowerCase();
+  const filtered=leads.filter(l=>(l.search_query||'').toLowerCase()===sq);
+  if(!filtered.length){toast('No leads found for this search','err');return;}
+  const clean=filtered.map(l=>({business_name:l.business_name||'',address:l.address||'',town:l.town||'',phone:l.phone||'',website:l.website||'',has_website:!!l.website,google_url:l.google_url||'',rating:l.rating||'',reviews:l.reviews||'',category:l.category||'',search_query:l.search_query||''}));
+  const fname=lastSearchQuery.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'')+'.json';
+  const b=new Blob([JSON.stringify(clean,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fname;a.click();
+  toast(`${clean.length} leads exported → ${fname}`,'ok');
+}
 
 function exportCSV(){if(!leads.length){toast('No leads','err');return;}const cols=['Name','Phone','Email','Website','Address','Category','Town','Rating','Reviews','Hot Lead','Status','Search Query','Facebook','Instagram','Activity Count'];const rows=leads.map(l=>[l.business_name,l.phone,l.email,l.website,l.address,l.category,l.town,l.rating,l.reviews,hot(l)?'Yes':'No',(ST[l._status||l.stage]||ST.none).l,l.search_query,l.facebook,l.instagram,(l._activity||[]).length].map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(','));const b=new Blob([cols.join(',')+'\n'+rows.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`leads-${new Date().toISOString().slice(0,10)}.csv`;a.click();toast(`${leads.length} leads exported`,'ok');}
 
